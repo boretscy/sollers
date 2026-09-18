@@ -1,0 +1,116 @@
+:root {
+    --yawhite: #fff;
+    --yablack: #292523;
+    --yaorange: #F77D40;
+    --yadarkgray: #3A3736;
+    --yagray: #666;
+    --yalightgray: #F3F3F3;
+
+
+    --yaradius-4: 4px;
+    --yaradius-8: 8px;
+    --yaradius-40: 40px;
+
+    --ya1px: 1px;
+    --ya3px: 3px;
+}
+
+/* color */
+.c-yawhite {color: var(--yawhite) !important;transition: .2s;}
+.c-yablack {color: var(--yablack) !important;transition: .2s;}
+.c-yaorange {color: var(--yaorange) !important;transition: .2s;}
+.c-yadarkgray {color: var(--yadarkgray) !important;transition: .2s;}
+.c-yagray {color: var(--yagray) !important;transition: .2s;}
+.c-yalightgray {color: var(--yalightgray) !important;transition: .2s;}
+
+/* :hover color */
+.c-h-yawhite:hover {color: var(--yawhite) !important;transition: .2s;}
+.c-h-yablack:hover {color: var(--yablack) !important;transition: .2s;}
+.c-h-yaorange:hover {color: var(--yaorange) !important;transition: .2s;}
+.c-h-yadarkgray:hover {color: var(--yadarkgray) !important;transition: .2s;}
+.c-h-yagray:hover {color: var(--yagray) !important;transition: .2s;}
+.c-h-yalightgray:hover {color: var(--yalightgray) !important;transition: .2s;}
+
+/* background-color */
+.bg-yawhite {background-color: var(--yawhite);transition: .2s;}
+.bg-yablack {background-color: var(--yablack);transition: .2s;}
+.bg-yaorange {background-color: var(--yaorange);transition: .2s;}
+.bg-yadarkgray {background-color: var(--yadarkgray);transition: .2s;}
+.bg-yagray {background-color: var(--yagray);transition: .2s;}
+.bg-yalightgray {background-color: var(--yalightgray);transition: .2s;}
+
+/* :hover background-color */
+.bg-h-yawhite:hover {background-color: var(--yawhite);transition: .2s;}
+.bg-h-yablack:hover {background-color: var(--yablack);transition: .2s;}
+.bg-h-yaorange:hover {background-color: var(--yaorange);transition: .2s;}
+.bg-h-yadarkgray:hover {background-color: var(--yadarkgray);transition: .2s;}
+.bg-h-yagray:hover {background-color: var(--yagray);transition: .2s;}
+.bg-h-yalightgray:hover {background-color: var(--yalightgray);transition: .2s;}
+
+/* :active background-color */
+.bg-a-yawhite:active {background-color: var(--yawhite);transition: .2s;}
+.bg-a-yablack:active {background-color: var(--yablack);transition: .2s;}
+.bg-a-yaorange:active {background-color: var(--yaorange);transition: .2s;}
+.bg-a-yadarkgray:active {background-color: var(--yadarkgray);transition: .2s;}
+.bg-a-yagray:active {background-color: var(--yagray);transition: .2s;}
+.bg-a-yalightgray:active {background-color: var(--yalightgray);transition: .2s;}
+
+/* border */
+.b-yawhite {border: var(--yawhite) 1px solid;transition: .2s;}
+.b-yablack {border: var(--yablack) 1px solid;transition: .2s;}
+.b-yaorange {border: var(--yaorange) 1px solid;transition: .2s;}
+.b-yadarkgray {border: var(--yadarkgray) 1px solid;transition: .2s;}
+.b-yagray {border: var(--yagray) 1px solid;transition: .2s;}
+.b-yalightgray {border: var(--yalightgray) 1px solid;transition: .2s;}
+
+/* :hover border */
+.b-h-yawhite:hover {border: var(--yawhite) 1px solid;transition: .2s;}
+.b-h-yablack:hover {border: var(--yablack) 1px solid;transition: .2s;}
+.b-h-yaorange:hover {border: var(--yaorange) 1px solid;transition: .2s;}
+.b-h-yadarkgray:hover {border: var(--yadarkgray) 1px solid;transition: .2s;}
+.b-h-yagray:hover {border: var(--yagray) 1px solid;transition: .2s;}
+.b-h-yalightgray:hover {border: var(--yalightgray) 1px solid;transition: .2s;}
+
+/* border-bottom */
+.b-b-yawhite {border-bottom: var(--yawhite) 1px solid;transition: .2s;}
+.b-b-yablack {border-bottom: var(--yablack) 1px solid;transition: .2s;}
+.b-b-yaorange {border-bottom: var(--yaorange) 1px solid;transition: .2s;}
+.b-b-yadarkgray {border-bottom: var(--yadarkgray) 1px solid;transition: .2s;}
+.b-b-yagray {border-bottom: var(--yagray) 1px solid;transition: .2s;}
+.b-b-yalightgray {border-bottom: var(--yalightgray) 1px solid;transition: .2s;}
+
+/* :hover border-bottom */
+.b-b-h-yawhite:hover {border-bottom: var(--yawhite) 1px solid;transition: .2s;}
+.b-b-h-yablack:hover {border-bottom: var(--yablack) 1px solid;transition: .2s;}
+.b-b-h-yaorange:hover {border-bottom: var(--yaorange) 1px solid;transition: .2s;}
+.b-b-h-yadarkgray:hover {border-bottom: var(--yadarkgray) 1px solid;transition: .2s;}
+.b-b-h-yagray:hover {border-bottom: var(--yagray) 1px solid;transition: .2s;}
+.b-b-h-yalightgray:hover {border-bottom: var(--yalightgray) 1px solid;transition: .2s;}
+
+/* border-radius-top-rigth */
+.b-radius-tr-yaradius-4 {border-radius: 0 var(--yaradius-4) 0 0;}
+.b-radius-tr-yaradius-8 {border-radius: 0 var(--yaradius-8) 0 0;}
+.b-radius-tr-yaradius-40 {border-radius: 0 var(--yaradius-40) 0 0;}
+
+/* border-radius-bottom-left */
+.b-radius-bl-yaradius-4 {border-radius: 0 0 0 var(--yaradius-4);}
+.b-radius-bl-yaradius-8 {border-radius: 0 0 0 var(--yaradius-8);}
+.b-radius-bl-yaradius-40 {border-radius: 0 0 0 var(--yaradius-40);}
+
+/* border-radius */
+.b-radius-yaradius-4 {border-radius: var(--yaradius-4);transition: .2s;}
+.b-radius-yaradius-8 {border-radius: var(--yaradius-8);transition: .2s;}
+.b-radius-yaradius-40 {border-radius: var(--yaradius-40);transition: .2s;}
+
+/* border-radius-circle */
+.b-radius-circle {border-radius: 50%;transition: .2s;}
+
+/* border-topleft-bottomright-no-radius */
+.b-radius-tr-bl-nr {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+} 
+
+/* width */
+.yaw-1px {width: var(--ya1px);}
+.yaw-3px {width: var(--ya3px);}

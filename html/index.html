@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sollers Юг-Авто — Официальный дилер в Краснодаре и Яблоновском</title>
+  
+  <!-- Fonts: Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       HEADER
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          
+          <!-- Logo & Dealer Info -->
+          <div class="header-brand">
+            <a href="/" class="d-inline-flex align-items-center">
+              <img src="img/header-logo.svg" alt="Sollers" height="26">
+            </a>
+            <div class="brand-divider d-none d-sm-block"></div>
+            <span class="dealer-title d-none d-sm-inline">Юг-Авто Яблоновский</span>
+          </div>
+
+          <!-- Contacts & Address -->
+          <div class="d-flex align-items-center gap-4">
+            <a href="tel:+78612032888" class="header-contact-item">
+              <img src="img/icon-header-phone.svg" width="16" height="16" alt="Телефон">
+              <span>+7 (861) 203-28-88</span>
+            </a>
+            <a href="https://yandex.ru/maps/-/CDT4UZ6b" target="_blank" rel="noopener noreferrer" class="header-contact-item d-none d-md-inline-flex">
+              <img src="img/icon-header-map-marker.svg" width="15" height="16" alt="Адрес">
+              <span>аул Тахтамукай, ул. Краснодарская, 3/3</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="header-nav">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <nav class="d-none d-md-flex align-items-center gap-4">
+            <a href="#models" class="nav-link-custom">Автомобили в наличии</a>
+            <a href="#models" class="nav-link-custom">Модели</a>
+            <a href="#special-offers" class="nav-link-custom">Клиентам</a>
+          </nav>
+
+          <button class="navbar-toggler d-md-none border-0 p-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Меню">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Offcanvas Menu -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold" id="mobileMenuLabel">Меню</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="d-flex flex-column gap-3 mb-4">
+        <a href="#models" class="nav-link-custom fs-5" data-bs-dismiss="offcanvas">Автомобили в наличии</a>
+        <a href="#models" class="nav-link-custom fs-5" data-bs-dismiss="offcanvas">Модели</a>
+        <a href="#special-offers" class="nav-link-custom fs-5" data-bs-dismiss="offcanvas">Клиентам</a>
+      </nav>
+      <div class="pt-3 border-top">
+        <div class="mb-3">
+          <a href="tel:+78612032888" class="header-contact-item fs-6">
+            <img src="img/icon-header-phone.svg" width="18" height="18" alt="Телефон">
+            <span>+7 (861) 203-28-88</span>
+          </a>
+        </div>
+        <div class="mb-4">
+          <div class="header-contact-item fs-7 text-muted">
+            <img src="img/icon-header-map-marker.svg" width="16" height="16" alt="Адрес">
+            <span>аул Тахтамукай, ул. Краснодарская, 3/3</span>
+          </div>
+        </div>
+        <button type="button" class="btn btn-sollers w-100" data-bs-toggle="modal" data-bs-target="#modalCallback">Заказать звонок</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         HERO SECTION / BANNER
+         ====================================================================== -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-card">
+          <img src="img/hero-banner.jpg" alt="Sollers SF5 (СФ5)" class="hero-card-img">
+          <div class="hero-overlay"></div>
+          
+          <div class="hero-content">
+            <h1 class="hero-title">Sollers SF5 (СФ5)</h1>
+            <p class="hero-desc">Комфортное управление и плавный ход с автоматической трансмиссией (6AT)</p>
+            <button type="button" class="btn btn-sollers" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers SF5 (СФ5)">
+              УЗНАТЬ БОЛЬШЕ
+            </button>
+          </div>
+
+          <div class="slider-controls">
+            <div class="slider-arrows">
+              <button class="slider-btn slider-btn-prev" aria-label="Предыдущий слайд">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="slider-btn slider-btn-next" aria-label="Следующий слайд">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="slider-pagination-custom">
+              <span class="slider-bullet active"></span>
+              <span class="slider-bullet"></span>
+              <span class="slider-bullet"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MODELS SECTION
+         ====================================================================== -->
+    <section class="section-models" id="models">
+      <div class="container">
+        <h2 class="section-title">Модельный ряд Sollers</h2>
+        
+        <div class="row g-4">
+          <!-- Row 1 -->
+          <!-- Model 1: SF1 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/sf1.png" alt="Sollers SF1 (СФ1)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers SF1 (СФ1)</h3>
+              <div class="model-card-type">Грузовой</div>
+              <div class="model-card-price">от 2 590 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers SF1 (СФ1)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- Model 2: SF4 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/sf4.png" alt="Sollers SF4 (СФ4)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers SF4 (СФ4)</h3>
+              <div class="model-card-type">Грузовой</div>
+              <div class="model-card-price">от 2 504 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers SF4 (СФ4)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- Model 3: SF5 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/sf5.png" alt="Sollers SF5 (СФ5)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers SF5 (СФ5)</h3>
+              <div class="model-card-type">Грузовой</div>
+              <div class="model-card-price">от 3 745 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers SF5 (СФ5)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- Model 4: Argo -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/argo.png" alt="Sollers Argo (Apro)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers Argo (Apro)</h3>
+              <div class="model-card-type">Грузовой</div>
+              <div class="model-card-price">от 1 915 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers Argo (Apro)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <!-- Model 5: ST6 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/st6.png" alt="Sollers ST6 (СТ6)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers ST6 (СТ6)</h3>
+              <div class="model-card-type">Полноприводный пикап</div>
+              <div class="model-card-price">от 2 504 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers ST6 (СТ6)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- Model 6: ST8 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/st8.png" alt="Sollers ST8 (СТ8)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers ST8 (СТ8)</h3>
+              <div class="model-card-type">Полноприводный пикап</div>
+              <div class="model-card-price">от 2 818 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers ST8 (СТ8)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- Model 7: ST9 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/st9.png" alt="Sollers ST9 (СТ9)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers ST9 (СТ9)</h3>
+              <div class="model-card-type">Полноприводный пикап</div>
+              <div class="model-card-price">от 3 425 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers ST9 (СТ9)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- Model 8: SP7 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="model-card">
+              <div class="model-card-img-wrap">
+                <img src="img/models/sp7.png" alt="Sollers SP7 (СП7)" class="model-card-img" loading="lazy">
+              </div>
+              <h3 class="model-card-title">Sollers SP7 (СП7)</h3>
+              <div class="model-card-type">Минивэн</div>
+              <div class="model-card-price">от 4 650 000 ₽</div>
+              <button type="button" class="btn btn-sollers-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Sollers SP7 (СП7)">
+                УЗНАТЬ БОЛЬШЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MISSION / ABOUT SUMMARY
+         ====================================================================== -->
+    <section class="section-quote">
+      <div class="container">
+        <div class="quote-box">
+          Sollers — один из крупнейших российских автопроизводителей, обладающий уникальными компетенциями в области производства и продаж лёгких коммерческих автомобилей.
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SPECIAL OFFERS
+         ====================================================================== -->
+    <section class="section-offers" id="special-offers">
+      <div class="container">
+        <h2 class="section-title">Спецпредложения</h2>
+        
+        <div class="offer-card">
+          <img src="img/special-offer.jpg" alt="Выгода до 50 000 ₽ при покупке в лизинг" class="offer-card-img">
+          <div class="offer-overlay"></div>
+          
+          <div class="offer-content">
+            <h3 class="offer-title">Выгода до 50 000 ₽ при покупке в лизинг</h3>
+            <button type="button" class="btn btn-sollers" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Лизинг с выгодой до 50 000 ₽">
+              УЗНАТЬ БОЛЬШЕ
+            </button>
+          </div>
+
+          <div class="slider-controls">
+            <div class="slider-arrows">
+              <button class="slider-btn" aria-label="Предыдущий слайд">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="slider-btn" aria-label="Следующий слайд">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="slider-pagination-custom">
+              <span class="slider-bullet active"></span>
+              <span class="slider-bullet"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         NEWS SECTION
+         ====================================================================== -->
+    <section class="section-news">
+      <div class="container position-relative">
+        <h2 class="section-title">Новости</h2>
+
+        <div class="row g-4 news-scroll-container">
+          <!-- News 1 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="news-card">
+              <div class="news-card-img-wrap">
+                <img src="img/news/news-1.jpg" alt="Юг-Авто - лучший дилер" class="news-card-img" loading="lazy">
+              </div>
+              <h3 class="news-card-title">Юг-Авто - лучший дилер по послепродажному обслуживанию Sollers</h3>
+              <p class="news-card-desc">Дилерский центр Sollers Юг-Авто одержал победу в конкурсе "Лучший дилер по послепродажному обслуживанию Sollers" в категории "Лучший дилер по сервисным стандартам".</p>
+              <button type="button" class="btn btn-sollers-outline mt-auto" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Новость: Лучший дилер">
+                ПОДРОБНЕЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- News 2 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="news-card">
+              <div class="news-card-img-wrap">
+                <img src="img/news/news-2.jpg" alt="График работы в праздничные дни" class="news-card-img" loading="lazy">
+              </div>
+              <h3 class="news-card-title">График работы в праздничные дни</h3>
+              <p class="news-card-desc">Поздравляем с первым майским днем, праздником созидания и мира!</p>
+              <button type="button" class="btn btn-sollers-outline mt-auto" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Новость: График работы">
+                ПОДРОБНЕЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- News 3 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="news-card">
+              <div class="news-card-img-wrap">
+                <img src="img/news/news-3.jpg" alt="С Днём России!" class="news-card-img" loading="lazy">
+              </div>
+              <h3 class="news-card-title">С Днём России!</h3>
+              <p class="news-card-desc">Дилерский центр Sollers Юг-Авто поздравляет всех с Днём России — праздником силы, традиций и общих достижений.</p>
+              <button type="button" class="btn btn-sollers-outline mt-auto" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Новость: С Днём России">
+                ПОДРОБНЕЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+
+          <!-- News 4 -->
+          <div class="col-12 col-sm-6 col-lg-3">
+            <div class="news-card">
+              <div class="news-card-img-wrap">
+                <img src="img/news/news-4.jpg" alt="С наступающим Новым годом" class="news-card-img" loading="lazy">
+              </div>
+              <h3 class="news-card-title">С наступающим Новым годом и Рождеством!</h3>
+              <p class="news-card-desc">Уважаемые клиенты Sollers Юг-Авто, поздравляем вас с Новым годом и Рождеством!</p>
+              <button type="button" class="btn btn-sollers-outline mt-auto" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Новость: Новый год">
+                ПОДРОБНЕЕ &nbsp;&gt;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel navigation arrows on sides -->
+        <div class="d-none d-xl-flex justify-content-between position-absolute top-50 start-0 end-0 translate-middle-y px-2 pointer-events-none" style="pointer-events: none;">
+          <button class="news-nav-btn news-prev" style="pointer-events: auto; margin-left: -28px;" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button class="news-nav-btn news-next" style="pointer-events: auto; margin-right: -28px;" aria-label="Вперед">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CALLBACK FORM SECTION
+         ====================================================================== -->
+    <section class="section-callback">
+      <div class="container">
+        <div class="callback-card">
+          <img src="img/callback-bg.jpg" alt="Сервисный центр Sollers" class="callback-bg-img">
+          <div class="callback-overlay"></div>
+
+          <div class="callback-content">
+            <h2 class="callback-title">Заказать звонок</h2>
+            
+            <form id="mainCallbackForm" class="row g-3 text-start">
+              <div class="col-12 col-md-6">
+                <input type="text" class="form-control form-control-custom" placeholder="Ваше имя" required>
+              </div>
+              <div class="col-12 col-md-6">
+                <input type="tel" class="form-control form-control-custom" placeholder="Телефон" required>
+              </div>
+              <div class="col-12">
+                <input type="text" class="form-control form-control-custom" placeholder="Комментарий">
+              </div>
+              
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-sollers w-100 py-3">ОТПРАВИТЬ ЗАЯВКУ</button>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check d-flex align-items-start gap-2 mt-2">
+                  <input class="form-check-input mt-1" type="checkbox" id="policyAgreement" checked required>
+                  <label class="form-check-label form-check-label-custom" for="policyAgreement">
+                    Даю согласие на обработку своих <a href="#" target="_blank">персональных данных</a> и соглашаюсь с <a href="#" target="_blank">политикой обработки персональных данных</a>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEO TEXT BLOCK
+         ====================================================================== -->
+    <section class="section-seo">
+      <div class="container">
+        <h2 class="seo-title">
+          Официальный дилер Sollers Юг-Авто<br>
+          в Краснодаре и Яблоновском
+        </h2>
+        <p class="seo-desc">
+          Официальный дилер Sollers, Юг-Авто предлагает широкий ассортимент автомобилей Sollers в Краснодаре и Яблоновском.<br>
+          В автосалоне клиенты могут ознакомиться с различными моделями, их комплектациями и ценами.<br>
+          Покупка автомобиля у официального дилера гарантирует высокое качество и надежность.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Col 1: Base links -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <ul class="footer-nav">
+            <li class="mb-3"><a href="#models" class="fw-bold text-white">АВТОМОБИЛИ В НАЛИЧИИ</a></li>
+            <li><a href="tel:+78612032888" class="fw-bold text-white">КОНТАКТЫ</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 2: Models list -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-col-title">МОДЕЛИ</div>
+          <ul class="footer-nav">
+            <li><a href="#models">Sollers Argo/Apro</a></li>
+            <li><a href="#models">Sollers SF4/СФ4</a></li>
+            <li><a href="#models">Sollers SF1 (СФ1)</a></li>
+            <li><a href="#models">Sollers SF5/СФ5</a></li>
+            <li><a href="#models">Sollers ST6/СТ6</a></li>
+            <li><a href="#models">Sollers ST8/СТ8</a></li>
+            <li><a href="#models">Sollers ST9 (СТ9)</a></li>
+            <li><a href="#models">Sollers SP7/СП7</a></li>
+            <li><a href="#models">Sollers SA9/CA9</a></li>
+            <li><a href="#models">Sollers SA6/CA6</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Buyers -->
+        <div class="col-6 col-md-3 col-lg-2">
+          <div class="footer-col-title">ПОКУПАТЕЛЯМ</div>
+          <ul class="footer-nav">
+            <li><a href="#special-offers">Специальные предложения</a></li>
+            <li><a href="#">Финансовые услуги</a></li>
+            <li><a href="#">О компании</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Owners -->
+        <div class="col-6 col-md-3 col-lg-3">
+          <div class="footer-col-title">ВЛАДЕЛЬЦАМ</div>
+          <ul class="footer-nav">
+            <li><a href="#">Специальное предложение для автомобилей старше 2х лет</a></li>
+            <li><a href="#">Телематический комплекс</a></li>
+            <li><a href="#">Гарантия SOLLERS</a></li>
+            <li><a href="#">Руководства по эксплуатации</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Action Buttons -->
+        <div class="col-12 col-lg-3">
+          <div class="d-flex flex-column gap-2">
+            <button type="button" class="btn-footer-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Подбор авто">ПОДБОР АВТО</button>
+            <button type="button" class="btn-footer-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Запись на сервис">ЗАПИСЬ НА СЕРВИС</button>
+            <button type="button" class="btn-footer-outline" data-bs-toggle="modal" data-bs-target="#modalCallback" data-model-title="Заказ звонка из футера">ЗАКАЗАТЬ ЗВОНОК</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="mb-2">
+          Сайт не является публичной офертой.<br>
+          Все содержащиеся на Сайте сведения носят исключительно информационный характер и не являются исчерпывающими.<br>
+          Все условия приобретения автомобилей, цены, спецпредложения и комплектации автомобилей указаны с целью ознакомления. Комплектации и цены могут быть изменены без предварительного оповещения.
+        </p>
+        <p class="mb-0">© 2026, все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       MODAL: Callback & Requests
+       ====================================================================== -->
+  <div class="modal fade" id="modalCallback" tabindex="-1" aria-labelledby="modalCallbackTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+        <div class="modal-header border-0 pb-0 pt-4 px-4">
+          <h5 class="modal-title fw-bold" id="modalCallbackTitle">Заказать звонок</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="text-muted fs-7 mb-4">Оставьте заявку, и наш специалист свяжется с вами в течение 10 минут для консультации.</p>
+          <form id="modalCallbackForm" class="d-flex flex-column gap-3">
+            <div>
+              <label class="form-label fs-7 fw-medium mb-1">Ваше имя</label>
+              <input type="text" class="form-control" placeholder="Иван" required>
+            </div>
+            <div>
+              <label class="form-label fs-7 fw-medium mb-1">Телефон</label>
+              <input type="tel" class="form-control" placeholder="+7 (___) ___-__-__" required>
+            </div>
+            <div class="form-check mt-1">
+              <input class="form-check-input" type="checkbox" id="modalAgreement" checked required>
+              <label class="form-check-label fs-8 text-muted" for="modalAgreement">
+                Согласен на обработку персональных данных
+              </label>
+            </div>
+            <button type="submit" class="btn btn-sollers w-100 py-3 mt-2">ОТПРАВИТЬ ЗАЯВКУ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
