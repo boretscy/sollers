@@ -57,3 +57,8 @@ Thumbs.db
 /vendor/
 /local/php_interface/vendor/
 /composer.lock
+
+# === AI Agents config ===
+.agents/
+.agent/
+
