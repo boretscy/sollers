@@ -132,6 +132,55 @@ class SiteSettings
     }
 
     /**
+     * Список email-адресов получателей заявок с форм сайта
+     *
+     * @return string[] Массив валидных email-адресов
+     */
+    public static function getFormRecipients(): array
+    {
+        $raw = (string)Option::get(self::MODULE_ID, 'form_recipients', '');
+        if (trim($raw) === '') {
+            $defaultEmail = static::getEmail();
+            return $defaultEmail !== '' ? [$defaultEmail] : [];
+        }
+
+        // Разделяем по переводу строки, запятой или точке с запятой
+        $items = preg_split('/[\r\n,;]+/', $raw) ?: [];
+        $result = [];
+
+        foreach ($items as $item) {
+            $email = trim($item);
+            if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $result[] = $email;
+            }
+        }
+
+        $result = array_values(array_unique($result));
+        if (empty($result)) {
+            $defaultEmail = static::getEmail();
+            return $defaultEmail !== '' ? [$defaultEmail] : [];
+        }
+
+        return $result;
+    }
+
+    /**
+     * Список получателей форм в виде строки с разделителем (по умолчанию ", ")
+     */
+    public static function getFormRecipientsString(string $separator = ', '): string
+    {
+        return implode($separator, static::getFormRecipients());
+    }
+
+    /**
+     * Исходная строка настроек получателей форм для textarea
+     */
+    public static function getFormRecipientsRaw(): string
+    {
+        return (string)Option::get(self::MODULE_ID, 'form_recipients', '');
+    }
+
+    /**
      * Фактический адрес
      */
     public static function getAddress(): string

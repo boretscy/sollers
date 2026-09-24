@@ -41,6 +41,7 @@ if ($request->isPost() && check_bitrix_sessid()) {
     $phone = (string)$request->getPost('phone');
     $additionalPhone = (string)$request->getPost('additional_phone');
     $email = (string)$request->getPost('email');
+    $formRecipients = (string)$request->getPost('form_recipients');
     $address = (string)$request->getPost('address');
     $schedule = (string)$request->getPost('schedule');
     $coordinates = (string)$request->getPost('coordinates');
@@ -53,6 +54,7 @@ if ($request->isPost() && check_bitrix_sessid()) {
     Option::set($moduleId, 'phone', trim($phone));
     Option::set($moduleId, 'additional_phone', trim($additionalPhone));
     Option::set($moduleId, 'email', trim($email));
+    Option::set($moduleId, 'form_recipients', trim($formRecipients));
     Option::set($moduleId, 'address', trim($address));
     Option::set($moduleId, 'schedule', trim($schedule));
     Option::set($moduleId, 'coordinates', trim($coordinates));
@@ -68,6 +70,7 @@ $siteName = Option::get($moduleId, 'site_name', 'Юг-Авто Яблоновс�
 $phone = Option::get($moduleId, 'phone', '+7 (861) 268-00-00');
 $additionalPhone = Option::get($moduleId, 'additional_phone', '');
 $email = Option::get($moduleId, 'email', 'info@sollers-yug-avto.ru');
+$formRecipients = Option::get($moduleId, 'form_recipients', '');
 $address = Option::get($moduleId, 'address', 'пгт. Яблоновский, ул. Ленина, 77');
 $schedule = Option::get($moduleId, 'schedule', 'Ежедневно с 08:00 до 20:00');
 $coordinates = Option::get($moduleId, 'coordinates', '44.987654, 38.987654');
@@ -112,6 +115,14 @@ $tabControl->Begin();
         <td width="40%"><label for="email"><strong>Контактный Email:</strong></label></td>
         <td width="60%">
             <input type="text" id="email" name="email" size="40" value="<?= HtmlFilter::encode($email) ?>">
+            <small style="display:block; color:#777; margin-top:3px;">Публичный email для отображения на сайте (в шапке, подвале, контактах)</small>
+        </td>
+    </tr>
+    <tr>
+        <td width="40%" style="vertical-align:top;"><label for="form_recipients"><strong>Получатели форм (email):</strong></label></td>
+        <td width="60%">
+            <textarea id="form_recipients" name="form_recipients" rows="4" cols="45" style="width:100%; max-width:400px;"><?= HtmlFilter::encode($formRecipients) ?></textarea>
+            <small style="display:block; color:#777; margin-top:3px;">Множественное поле: адреса для отправки заявок с сайта. Укажите каждый email с новой строки или через запятую.<br>Если пусто, заявки будут отправляться на контактный email.</small>
         </td>
     </tr>
 
