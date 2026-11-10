@@ -21,19 +21,67 @@ $APPLICATION->SetTitle("Гарантия Sollers");
 	</div>
 </div>
 
-<!-- Model Tabs & Key Figures -->
+<!-- Models from IBlock & Key Figures -->
 <div class="container my-5">
-	<!-- Tabs Navigation -->
-	<div class="d-flex flex-wrap gap-2 gap-md-4 border-bottom pb-3 mb-5 overflow-auto text-nowrap" style="border-color: #E6E8EC !important;">
-		<a href="#tab-sf1" class="warranty-model-tab active text-decoration-none fw-medium pb-2 position-relative" style="color: #292523; font-size: 16px; border-bottom: 2px solid #D15C22;">Sollers SF1 (СФ1)</a>
-		<a href="#tab-sf4" class="warranty-model-tab text-decoration-none fw-medium pb-2 text-secondary" style="font-size: 16px;">Sollers SF4 (СФ4)</a>
-		<a href="#tab-sf5" class="warranty-model-tab text-decoration-none fw-medium pb-2 text-secondary" style="font-size: 16px;">Sollers SF5 (СФ5)</a>
-		<a href="#tab-argo" class="warranty-model-tab text-decoration-none fw-medium pb-2 text-secondary" style="font-size: 16px;">Sollers Argo (Арго)</a>
-		<a href="#tab-st6" class="warranty-model-tab text-decoration-none fw-medium pb-2 text-secondary" style="font-size: 16px;">Sollers ST6 (СТ6)</a>
-		<a href="#tab-st8" class="warranty-model-tab text-decoration-none fw-medium pb-2 text-secondary" style="font-size: 16px;">Sollers ST8 (СТ8)</a>
-		<a href="#tab-st9" class="warranty-model-tab text-decoration-none fw-medium pb-2 text-secondary" style="font-size: 16px;">Sollers ST9 (СТ9)</a>
-		<a href="#tab-sp7" class="warranty-model-tab text-decoration-none fw-medium pb-2 text-secondary" style="font-size: 16px;">Sollers SP7 (СП7)</a>
-	</div>
+	<!-- Dynamic Models List from IBlock (IBLOCK_ID=3) -->
+	<?$APPLICATION->IncludeComponent(
+		"bitrix:news.list",
+		"warranty.models",
+		Array(
+			"ACTIVE_DATE_FORMAT" => "d.m.Y",
+			"ADD_SECTIONS_CHAIN" => "N",
+			"AJAX_MODE" => "N",
+			"AJAX_OPTION_ADDITIONAL" => "",
+			"AJAX_OPTION_HISTORY" => "N",
+			"AJAX_OPTION_JUMP" => "N",
+			"AJAX_OPTION_STYLE" => "Y",
+			"CACHE_FILTER" => "N",
+			"CACHE_GROUPS" => "Y",
+			"CACHE_TIME" => "36000000",
+			"CACHE_TYPE" => "A",
+			"CHECK_DATES" => "Y",
+			"COMPONENT_TEMPLATE" => "warranty.models",
+			"DETAIL_URL" => "",
+			"DISPLAY_BOTTOM_PAGER" => "N",
+			"DISPLAY_DATE" => "N",
+			"DISPLAY_NAME" => "Y",
+			"DISPLAY_PICTURE" => "N",
+			"DISPLAY_PREVIEW_TEXT" => "N",
+			"DISPLAY_TOP_PAGER" => "N",
+			"FIELD_CODE" => ["ID", "NAME", "CODE"],
+			"FILTER_NAME" => "",
+			"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+			"IBLOCK_ID" => "3",
+			"IBLOCK_TYPE" => "content",
+			"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+			"INCLUDE_SUBSECTIONS" => "N",
+			"MESSAGE_404" => "",
+			"NEWS_COUNT" => "20",
+			"PAGER_BASE_LINK_ENABLE" => "N",
+			"PAGER_DESC_NUMBERING" => "N",
+			"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+			"PAGER_SHOW_ALL" => "N",
+			"PAGER_SHOW_ALWAYS" => "N",
+			"PAGER_TEMPLATE" => ".default",
+			"PAGER_TITLE" => "Модели",
+			"PARENT_SECTION" => "",
+			"PARENT_SECTION_CODE" => "",
+			"PREVIEW_TRUNCATE_LEN" => "",
+			"PROPERTY_CODE" => ["WARRANTY_FILE"],
+			"SET_BROWSER_TITLE" => "N",
+			"SET_LAST_MODIFIED" => "N",
+			"SET_META_DESCRIPTION" => "N",
+			"SET_META_KEYWORDS" => "N",
+			"SET_STATUS_404" => "N",
+			"SET_TITLE" => "N",
+			"SHOW_404" => "N",
+			"SORT_BY1" => "SORT",
+			"SORT_BY2" => "ID",
+			"SORT_ORDER1" => "ASC",
+			"SORT_ORDER2" => "ASC",
+			"STRICT_SECTION_CHECK" => "N"
+		)
+	);?>
 
 	<!-- Big Numbers (Key Figures) matching Figma 247:726 -->
 	<div class="row justify-content-center my-4 py-2 text-center">
