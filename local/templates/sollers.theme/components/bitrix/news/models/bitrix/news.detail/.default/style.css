@@ -1,0 +1,72 @@
+.model-hero-card {
+    background-color: #F8F9FA;
+    border: 1px solid #E9ECEF;
+}
+
+.model-hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+.model-hero-slogan {
+    letter-spacing: 0.05em;
+    font-size: 1.1rem;
+}
+
+.model-main-img {
+    max-height: 420px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.model-main-img:hover {
+    transform: scale(1.02);
+}
+
+.spec-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spec-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.comfort-card {
+    background-color: #FAFAFA;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comfort-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    background-color: #FFFFFF;
+}
+
+.safety-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.safety-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.model-cta-card {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+}
+
+.max-w-600 {
+    max-width: 600px;
+}
+
+@media (max-width: 991.98px) {
+    .model-hero-title {
+        font-size: 2rem;
+    }
+    .model-main-img {
+        max-height: 300px;
+        margin-top: 1rem;
+    }
+}

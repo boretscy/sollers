@@ -1,0 +1,16 @@
+.models .description {
+	font-size: 24px;
+}
+
+.models-card .title,
+.models-card .price {
+	font-size: 24px;
+}
+
+.models-card .body {
+	font-size: 18px;
+}
+
+.models-card .models-card-button {
+	height: 40px;
+}
