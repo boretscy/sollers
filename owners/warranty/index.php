@@ -148,7 +148,7 @@ $APPLICATION->SetTitle("Гарантия Sollers");
 </div>
 
 <!-- Full-width White Background Section: Лакокрасочное покрытие + Гарантия не распространяется на (Rectangle 4886) -->
-<section class="bg-white py-5 mb-5 shadow-sm">
+<section class="bg-white py-5 mb-5">
 	<div class="container py-lg-3">
 		<!-- Paint & Body Section (Frame 1000003868) -->
 		<div class="row mb-5">

@@ -126,7 +126,7 @@ $APPLICATION->SetTitle("Помощь на дорогах");
 </div>
 
 <!-- Full-width White Background Section: Действие программы (Rectangle 4886) -->
-<section class="bg-white py-5 mb-5 shadow-sm">
+<section class="bg-white py-5 mb-5">
 	<div class="container py-lg-3">
 		<!-- Program Description (Frame 1000003868) -->
 		<div class="row mb-4">
