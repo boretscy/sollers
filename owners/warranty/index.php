@@ -102,7 +102,7 @@ $APPLICATION->SetTitle("Гарантия Sollers");
 <!-- Warranty Conditions & Restrictions (Transparent background) -->
 <div class="container my-5">
 	<!-- Conditions List (Frame 1000003869) -->
-	<div class="row mb-4">
+	<div class="row mb-5">
 		<div class="col-12">
 			<h3 class="fw-b-c mb-4" style="font-size: 28px; line-height: normal; color: #292523;">Условия гарантии</h3>
 			<div class="d-flex flex-column gap-3" style="color: #292523; font-size: 16px; line-height: 22px;">
@@ -126,18 +126,18 @@ $APPLICATION->SetTitle("Гарантия Sollers");
 		</div>
 	</div>
 
-	<!-- Accordion: Ограничения (Frame 1000003903) — Без белого фона, прозрачный с разделителем -->
+	<!-- Accordion: Ограничения (Frame 1000003903) — С тонкой тёмной рамкой border border-dark rounded-3 без заливки -->
 	<div class="row mb-5">
 		<div class="col-12">
 			<div class="accordion border-0" id="accordionWarrantyRestrictions">
 				<div class="accordion-item border-0 bg-transparent">
-					<button class="accordion-button collapsed px-0 py-3 bg-transparent text-uppercase fw-semibold d-flex justify-content-between align-items-center shadow-none border-bottom"
+					<button class="accordion-button collapsed px-4 py-3 bg-transparent border border-dark rounded-3 text-uppercase fw-semibold d-flex justify-content-between align-items-center shadow-none cursor-pointer"
 							type="button" data-bs-toggle="collapse" data-bs-target="#collapseRestrictions" aria-expanded="false" aria-controls="collapseRestrictions"
-							style="color: #292523; font-size: 16px; border-color: #E6E8EC !important;">
+							style="color: #292523; font-size: 15px; letter-spacing: 0.5px;">
 						<span>ограничения</span>
 					</button>
 					<div id="collapseRestrictions" class="accordion-collapse collapse" data-bs-parent="#accordionWarrantyRestrictions">
-						<div class="accordion-body px-0 py-3" style="color: #292523; font-size: 15px; line-height: 22px;">
+						<div class="accordion-body px-4 py-3 border border-dark border-top-0 rounded-bottom-3" style="color: #292523; font-size: 15px; line-height: 22px;">
 							Гарантия не распространяется на естественный износ деталей, подверженных эксплуатационному износу (тормозные колодки, щетки стеклоочистителей, лампы накаливания, предохранители), а также на регламентные регулировочные работы и плановое техническое обслуживание. Подробный перечень ограничений указан в сервисной книжке автомобиля.
 						</div>
 					</div>
@@ -217,18 +217,18 @@ $APPLICATION->SetTitle("Гарантия Sollers");
 
 <!-- Bottom Container: Запасные части + Поддержка клиентов (Transparent background) -->
 <div class="container my-5">
-	<!-- Accordion: Запасные части (Frame 1000003932) — Без белого фона, прозрачный с разделителем -->
+	<!-- Accordion: Запасные части (Frame 1000003932) — С тонкой тёмной рамкой border border-dark rounded-3 без заливки -->
 	<div class="row mb-5">
 		<div class="col-12">
 			<div class="accordion border-0" id="accordionWarrantyParts">
 				<div class="accordion-item border-0 bg-transparent">
-					<button class="accordion-button collapsed px-0 py-3 bg-transparent text-uppercase fw-semibold d-flex justify-content-between align-items-center shadow-none border-bottom"
+					<button class="accordion-button collapsed px-4 py-3 bg-transparent border border-dark rounded-3 text-uppercase fw-semibold d-flex justify-content-between align-items-center shadow-none cursor-pointer"
 							type="button" data-bs-toggle="collapse" data-bs-target="#collapseParts" aria-expanded="false" aria-controls="collapseParts"
-							style="color: #292523; font-size: 16px; border-color: #E6E8EC !important;">
+							style="color: #292523; font-size: 15px; letter-spacing: 0.5px;">
 						<span>Запасные части</span>
 					</button>
 					<div id="collapseParts" class="accordion-collapse collapse" data-bs-parent="#accordionWarrantyParts">
-						<div class="accordion-body px-0 py-3" style="color: #292523; font-size: 15px; line-height: 22px;">
+						<div class="accordion-body px-4 py-3 border border-dark border-top-0 rounded-bottom-3" style="color: #292523; font-size: 15px; line-height: 22px;">
 							На оригинальные запасные части и аксессуары Sollers, приобретенные и установленные у официального дилера Юг-Авто, предоставляется официальная гарантия производителя. Гарантия действует при условии соблюдения правил установки и эксплуатации.
 						</div>
 					</div>
@@ -263,5 +263,13 @@ $APPLICATION->SetTitle("Гарантия Sollers");
 		</div>
 	</div>
 </div>
+
+<style>
+/* Accordion border state adjustments when open */
+.accordion-button:not(.collapsed) {
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+</style>
 
 <?php require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"); ?>
