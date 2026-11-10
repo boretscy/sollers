@@ -44,15 +44,23 @@
                     }
 
                     $mail->Body = 'Заполнена форма '.$POST['FORM_NAME'].'<br /><br />';
-                    if ( $POST['MODEL'] )        $mail->Body .= 'Модель: '.$POST['MODEL'].'<br />';
-                    if ( $POST['REGION'] )       $mail->Body .= 'Регион: '.$POST['REGION'].'<br />';
-                    if ( $POST['NAME'] )         $mail->Body .= 'Имя: '.$POST['NAME'].'<br />';
-                    if ( $POST['PHONE'] )        $mail->Body .= 'Телефон: '.$POST['PHONE'].'<br />';
-                    if ( $POST['EMAIL'] )        $mail->Body .= 'E-mail: '.$POST['EMAIL'].'<br />';
-                    if ( $POST['DATES'] )        $mail->Body .= 'Длительность и даты: '.$POST['DATES'].'<br />';
-                    if ( $POST['COMPANY_NAME'] ) $mail->Body .= 'Организация: '.$POST['COMPANY_NAME'].'<br />';
-                    if ( $POST['COMPANY_INN'] )  $mail->Body .= 'ИНН: '.$POST['COMPANY_INN'].'<br />';
-                    if ( $POST['COMMENT'] )      $mail->Body .= 'Комментарий: '.$POST['COMMENT'].'<br />';
+                    if ( !empty($POST['MODEL']) )        $mail->Body .= 'Модель: '.$POST['MODEL'].'<br />';
+                    if ( !empty($POST['VIN']) )          $mail->Body .= 'VIN: '.$POST['VIN'].'<br />';
+                    if ( !empty($POST['MILEAGE']) )      $mail->Body .= 'Пробег: '.$POST['MILEAGE'].'<br />';
+                    if ( !empty($POST['WISHES']) )       $mail->Body .= 'Пожелания по ремонту: '.$POST['WISHES'].'<br />';
+                    if ( !empty($POST['SERVICE_TYPE']) ) $mail->Body .= 'Тип обслуживания: '.$POST['SERVICE_TYPE'].'<br />';
+                    if ( !empty($POST['REGION']) )       $mail->Body .= 'Регион: '.$POST['REGION'].'<br />';
+                    if ( !empty($POST['CITY']) )         $mail->Body .= 'Город: '.$POST['CITY'].'<br />';
+                    if ( !empty($POST['DEALERSHIP']) )   $mail->Body .= 'Дилерский центр: '.$POST['DEALERSHIP'].'<br />';
+                    if ( !empty($POST['DATE']) )         $mail->Body .= 'Желаемая дата: '.$POST['DATE'].'<br />';
+                    if ( !empty($POST['NAME']) )         $mail->Body .= 'Имя: '.$POST['NAME'].'<br />';
+                    if ( !empty($POST['PHONE']) )        $mail->Body .= 'Телефон: '.$POST['PHONE'].'<br />';
+                    if ( !empty($POST['EMAIL']) )        $mail->Body .= 'E-mail: '.$POST['EMAIL'].'<br />';
+                    if ( !empty($POST['DATES']) )        $mail->Body .= 'Длительность и даты: '.$POST['DATES'].'<br />';
+                    if ( !empty($POST['COMPANY_NAME']) ) $mail->Body .= 'Организация: '.$POST['COMPANY_NAME'].'<br />';
+                    if ( !empty($POST['COMPANY_INN']) )  $mail->Body .= 'ИНН: '.$POST['COMPANY_INN'].'<br />';
+                    if ( !empty($POST['COMMENT']) )      $mail->Body .= 'Комментарий: '.$POST['COMMENT'].'<br />';
+                    if ( isset($POST['LEGAL_ENTITY']) )    $mail->Body .= 'Юридическое лицо: '.($POST['LEGAL_ENTITY'] ? 'Да' : 'Нет').'<br />';
                     if ( isset($POST['AGREE_ADS']) )       $mail->Body .= 'Согласие на рекламу: '.($POST['AGREE_ADS'] ? 'Да' : 'Нет').'<br />';
                     if ( isset($POST['AGREE_INTERVIEW']) ) $mail->Body .= 'Согласие на интервью: '.($POST['AGREE_INTERVIEW'] ? 'Да' : 'Нет').'<br />';
 
