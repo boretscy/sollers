@@ -1,0 +1,22 @@
+.offer .description {font-size: 18px; font-weight: 600;}
+.offer .image {
+	height: 420px;
+	background-position: center;
+	background-size: cover;
+}
+.offer .image .plate {font-size: 18px;}
+.offer .image .subtitle {font-size: 24px;}
+.offer .summury-title {font-size: 28px;}
+.offer .summury-text::before {
+	content: '•';
+	color: var(--yaorange);
+	font-size: 28px;
+	position: absolute;
+	left: 0;
+    top: -10px;
+}
+.offer .disclamer {font-size: 12px;}
+.offer .table>:not(caption)>*>* {background-color: var(--yalightgray);}
+.offer .table {font-size: 18px;}
+.offer .table th {font-size: 22px; vertical-align: top;}
+.offer .table th .sub {font-size: 16px;}
