@@ -1,0 +1,16 @@
+.main-models .description {
+	font-size: 24px;
+}
+
+.main-models-card .title,
+.main-models-card .price {
+	font-size: 24px;
+}
+
+.main-models-card .body {
+	font-size: 18px;
+}
+
+.main-models-card .main-models-card-button {
+	height: 40px;
+}

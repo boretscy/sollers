@@ -1,0 +1,20 @@
+.form-button {
+    height: 54px;
+}
+.form-control {
+    height: 54px;
+}
+.form-control:focus {
+    border-color: var(--yagray);
+    outline: 0;
+    box-shadow: none
+}
+.form-check-input:checked {
+    background-color: var(--yaorange);
+    border-color: var(--yaorange);
+}
+form .form-check-input:focus {
+    box-shadow: none;
+    border-color: var(--yaorange);
+}
+.alert {display: none;}

@@ -9,6 +9,11 @@ use Bitrix\Main\Loader;
 // Автоподключение локального модуля настроек сайта
 Loader::includeModule('sollers.settings');
 
+// Глобальный алиас для быстрого доступа к настройкам в любых шаблонах: Site::get...()
+if (class_exists(\Sollers\Settings\Config\SiteSettings::class) && !class_exists('Site', false)) {
+    class_alias(\Sollers\Settings\Config\SiteSettings::class, 'Site');
+}
+
 // Добавление пункта "Настройки сайта Sollers" в меню админки (раздел "Контент")
 \Bitrix\Main\EventManager::getInstance()->addEventHandler(
     'main',
@@ -27,3 +32,8 @@ Loader::includeModule('sollers.settings');
         ];
     }
 );
+
+
+// Загрузка вспомогательного приложения YApp
+require_once __DIR__ . '/YApp/YApp.php';
+$yapp = new YApp();

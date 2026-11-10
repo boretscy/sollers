@@ -1,44 +1,166 @@
-/* Left menu*/
-ul.left-menu
-{
-	list-style:none;
-	margin:0; padding:0;
-	margin-bottom:8px;
-	position: relative; /*IE bug*/
+/* TOP HEADER */
+.top-menu-icon-wrap {
+	width: 24px;
+	height: 24px;
 }
 
-ul.left-menu li
-{
-	padding: 10px 16px;
-	background:#F5F5F5 url(images/left_menu_bg.gif) top repeat-x;
+.header-site-name {
+	font-size: 15px;
+	color: #292523;
 }
 
-ul.left-menu li a
-{
-	font-size:100%;
-	color:#BC262C;
-	font-weight:bold;
-	text-decoration:none;
+.header-contact-text {
+	font-size: 15px;
+	color: #292523;
 }
 
-ul.left-menu li a:visited
-{
-	color:#BC262C;
+/* TOP MENU BAR (Frame 80:1978: bg #f3f3f3, height 52px, items gap 40px) */
+.top-menu-bar {
+	background-color: #F3F3F3;
+	min-height: 52px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #E0E0E0;
+	position: relative;
+	z-index: 1040;
 }
 
-ul.left-menu li a:hover
-{
-	color:#BC262C;
+.top-menu-nav {
+	gap: 40px;
+	height: 52px;
 }
 
-
-ul.left-menu li a.selected:link,
-ul.left-menu li a.selected:visited,
-ul.left-menu li a.selected:active,
-ul.left-menu li a.selected:hover
-{
-	color:#FC8D3D;
+.top-menu-link {
+	font-family: var(--font-pro, 'TT Commons Pro', sans-serif);
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 19.5px;
+	color: #292523;
+	transition: color 0.15s ease;
+	display: flex;
+	align-items: center;
+	height: 52px;
+	cursor: pointer;
 }
 
+.top-menu-link:hover,
+.top-menu-link.active,
+.top-menu-link.is-hovered {
+	color: #F37032;
+}
 
+/* MEGAMENU PANELS (единый фон #F3F3F3 согласно макету) */
+.megamenu-panel {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	width: 100%;
+	background-color: #F3F3F3;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+	z-index: 1050;
+	border-top: 1px solid #E0E0E0;
+}
 
+/* MEGAMENU 1: МОДЕЛИ */
+.megamenu-models {
+	background-color: #F3F3F3;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+.megamenu-model-card {
+	transition: transform 0.2s ease;
+	border-radius: 8px;
+}
+
+.megamenu-model-card:hover {
+	transform: translateY(-4px);
+}
+
+.megamenu-model-card:hover .megamenu-model-title {
+	color: #F37032;
+}
+
+.megamenu-model-img-wrap {
+	height: 95px;
+	width: 100%;
+}
+
+.megamenu-model-img-wrap img {
+	max-height: 90px;
+	max-width: 100%;
+	object-fit: contain;
+}
+
+.megamenu-model-title {
+	font-size: 16px;
+	letter-spacing: -0.01em;
+	transition: color 0.15s ease;
+}
+
+/* MEGAMENU 2: КЛИЕНТАМ */
+.megamenu-clients {
+	background-color: #F3F3F3;
+}
+
+.megamenu-clients-subtabs {
+	background-color: #F3F3F3;
+	border-top: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+.clients-subtab-btn {
+	font-family: var(--font-pro, 'TT Commons Pro', sans-serif);
+	font-size: 16px;
+	font-weight: 600;
+	color: #292523;
+	cursor: pointer;
+	transition: color 0.15s ease;
+}
+
+.clients-subtab-btn:hover,
+.clients-subtab-btn.active {
+	color: #F37032;
+}
+
+.megamenu-clients-content {
+	background-color: #F3F3F3;
+	border-bottom: 1px solid #E0E0E0;
+	min-height: 48px;
+	display: flex;
+	align-items: center;
+}
+
+.megamenu-client-link {
+	font-family: var(--font-pro, 'TT Commons Pro', sans-serif);
+	font-size: 15px;
+	font-weight: 500;
+	color: #292523;
+	transition: color 0.15s ease;
+}
+
+.megamenu-client-link:hover {
+	color: #F37032;
+}
+
+@media (max-width: 991.98px) {
+	.top-menu-nav {
+		gap: 20px;
+		flex-wrap: wrap;
+		height: auto;
+		padding: 10px 0;
+	}
+	.top-menu-link {
+		font-size: 16px;
+		height: auto;
+	}
+	.megamenu-model-img-wrap {
+		height: 70px;
+	}
+	.megamenu-model-img-wrap img {
+		max-height: 65px;
+	}
+	.megamenu-model-title {
+		font-size: 14px;
+	}
+}

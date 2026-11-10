@@ -1,0 +1,63 @@
+.main-offers,
+.swMainOffers {
+	height: 420px;
+}
+
+.swMainOffers-item {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.swMainOffers-text {
+	font-size: 24px;
+}
+
+.swMainOffers-button {
+	width: 320px;
+	height: 40px;
+	font-size: 16px;
+}
+
+.swMainOffers .swiper-horizontal>.swiper-pagination-bullets,
+.swMainOffers .swiper-pagination-bullets.swiper-pagination-horizontal,
+.swMainOffers .swiper-pagination-custom,
+.swMainOffers .swiper-pagination-fraction {
+	bottom: 40px;
+	width: 50%;
+	left: unset;
+	right: 0;
+}
+
+.swMainOffers .swiper-pagination {
+	text-align: right;
+	padding-right: 40px;
+}
+
+.swMainOffers .swiper-pagination-bullet {
+	width: 20px;
+	height: 4px;
+	display: inline-block;
+	border-radius: 2px;
+	background: var(--yawhite);
+	opacity: 1;
+}
+
+.swMainOffers .swiper-pagination-bullet-active {
+	opacity: 1;
+	width: 40px;
+	background: var(--yaorange);
+}
+
+.swMainOffers .swiper-navigation {
+	position: absolute;
+	width: 50%;
+	bottom: 30px;
+	left: 40px;
+	z-index: 1;
+}
+
+.swMainOffers .swiper-navigation .swiper-navigation-item {
+	width: 55px;
+	height: 55px;
+}

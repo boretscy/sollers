@@ -34,6 +34,8 @@ $APPLICATION->SetTitle("Модельный ряд Sollers");
 			0 => "BODY",
 			1 => "PRICE",
 			2 => "WARRANTY_FILE",
+			3 => "BANNER",
+			4 => "BROCHURE",
 		],
 		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "N",

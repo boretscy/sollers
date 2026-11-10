@@ -1,94 +1,122 @@
-/* MODEL HERO BANNER (Frame 591 by Figma) */
-.model-hero-frame {
+/* MODEL HERO BANNER (Frame 591, 1240x420 exact mockup) */
+/* Signature Sollers diagonal rounding: top-left: 0, top-right: 40px, bottom-right: 0, bottom-left: 40px */
+.model-hero-banner-image {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 0 40px 0 40px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.model-hero-banner-image img {
+    border-radius: 0 40px 0 40px;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Hotspot positioning corresponding to the button in 1240x420 mockup (x:40, y:320, w:320, h:60) */
+.model-hero-banner-hotspot {
+    position: absolute;
+    left: 3.22%;  /* 40 / 1240 */
+    bottom: 9.52%; /* 40 / 420 */
+    width: 25.8%;  /* 320 / 1240 */
+    height: 14.28%; /* 60 / 420 */
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 5;
+    transition: box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.model-hero-banner-hotspot:hover {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* Fallback hero if no banner image */
+.model-hero-banner {
     background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 50%, #151515 100%);
     min-height: 420px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 0 40px 0 40px;
 }
 
-.model-hero-h1 {
-    font-size: 2.75rem;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+.btn-hero-action {
+    background-color: #F37032;
     color: #FFFFFF;
-}
-
-.model-hero-slogan {
-    font-size: 1.25rem;
-    color: #D15C22;
-    letter-spacing: 0.05em;
-}
-
-.warranty-badge-line .warranty-dot {
-    width: 6px;
-    height: 6px;
-    background-color: #D15C22;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.warranty-badge-line .warranty-text {
-    font-size: 0.95rem;
-    color: #CCCCCC;
-}
-
-.model-hero-price {
-    font-size: 2.2rem;
-    color: #FFFFFF;
-}
-
-.btn-model-hero {
-    background-color: #D15C22;
-    color: #FFFFFF;
-    padding: 16px 36px;
     border-radius: 8px;
-    font-size: 0.95rem;
+    width: 320px;
+    height: 60px;
+    font-size: 16px;
     letter-spacing: 0.05em;
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.btn-model-hero:hover {
-    background-color: #b84b15;
+.btn-hero-action:hover {
+    background-color: #d15c22;
     color: #FFFFFF;
     transform: translateY(-2px);
 }
 
-.model-hero-car-img {
-    max-height: 340px;
-    object-fit: contain;
-    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
-    transition: transform 0.3s ease;
-}
-
-.model-hero-car-img:hover {
-    transform: scale(1.03);
-}
-
-/* ANCHOR NAV BAR (129:1078 by Figma) */
+/* ANCHOR NAV BAR (Block 2 from mockup: light-gray #F3F3F3, height 60px) */
 .model-anchor-nav-bar {
-    background-color: #292523;
+    background-color: #F3F3F3;
+    min-height: 60px;
 }
 
 .model-anchor-nav-bar .anchor-link {
-    color: #FFFFFF;
-    opacity: 0.85;
-    transition: opacity 0.2s ease, color 0.2s ease;
-    border-bottom: 2px solid transparent;
+    color: #292523;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
 }
 
 .model-anchor-nav-bar .anchor-link:hover {
-    opacity: 1;
-    color: #D15C22;
-    border-bottom-color: #D15C22;
+    color: #F37032;
 }
 
-.btn-nav-doc {
-    border-color: rgba(255, 255, 255, 0.3) !important;
+/* Кнопка БРОШЮРА */
+.btn-model-brochure {
+    background-color: #FFFFFF;
+    color: #292523;
+    border: 1px solid #292523;
+    border-radius: 8px;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-model-brochure:hover {
+    background-color: #292523;
+    color: #FFFFFF;
+}
+
+.btn-model-brochure:hover .brochure-arrow path {
+    stroke: #FFFFFF;
+}
+
+/* Кнопка КАТАЛОГ АКСЕССУАРОВ */
+.btn-model-accessories {
+    background-color: #F37032;
+    color: #FFFFFF;
+    border: 1px solid #F37032;
+    border-radius: 8px;
+    height: 40px;
+    padding: 0 24px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.btn-nav-doc:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #FFFFFF !important;
+.btn-model-accessories:hover {
+    background-color: #D15C22;
+    border-color: #D15C22;
+    color: #FFFFFF;
 }
 
 /* SECTION TITLES */
@@ -153,16 +181,10 @@
 }
 
 @media (max-width: 991.98px) {
-    .model-hero-h1 {
-        font-size: 2.2rem;
-    }
-    .model-hero-price {
-        font-size: 1.8rem;
-    }
-    .model-hero-car-img {
-        max-height: 240px;
-    }
     .model-section-title {
         font-size: 1.6rem;
+    }
+    .model-anchor-nav-bar {
+        padding: 12px 0;
     }
 }

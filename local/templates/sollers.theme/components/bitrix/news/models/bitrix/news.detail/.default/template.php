@@ -16,128 +16,154 @@ $modelData = !empty($arResult['MODEL_DATA']) && is_array($arResult['MODEL_DATA']
 $priceVal = !empty($arResult['PROPERTIES']['PRICE']['VALUE']) ? (float)$arResult['PROPERTIES']['PRICE']['VALUE'] : 0;
 $priceText = !empty($modelData['PRICE_TEXT']) ? $modelData['PRICE_TEXT'] : ($priceVal > 0 ? 'от ' . number_format($priceVal, 0, '.', ' ') . ' ₽' : '');
 
-$bodyVal = !empty($arResult['PROPERTIES']['BODY']['VALUE']) ? $arResult['PROPERTIES']['BODY']['VALUE'] : '';
-$detailImg = !empty($arResult['DETAIL_PICTURE']['SRC']) ? $arResult['DETAIL_PICTURE']['SRC'] : (!empty($arResult['PREVIEW_PICTURE']['SRC']) ? $arResult['PREVIEW_PICTURE']['SRC'] : '');
+// Banner from IBLOCK property BANNER
+$bannerSrc = '';
+if (!empty($arResult['PROPERTIES']['BANNER']['VALUE'])) {
+    $bannerSrc = CFile::GetPath($arResult['PROPERTIES']['BANNER']['VALUE']);
+}
 
-$slogan = !empty($modelData['SLOGAN']) ? $modelData['SLOGAN'] : 'СОЗДАН ДЛЯ РАБОТЫ';
-$subtitle = !empty($modelData['SUBTITLE']) ? $modelData['SUBTITLE'] : '';
-$warrantyBadges = !empty($modelData['WARRANTY_BADGES']) && is_array($modelData['WARRANTY_BADGES']) ? $modelData['WARRANTY_BADGES'] : [];
-$engineSpecs = !empty($modelData['ENGINE_SPECS']) && is_array($modelData['ENGINE_SPECS']) ? $modelData['ENGINE_SPECS'] : [];
-$comfortItems = !empty($modelData['COMFORT_ITEMS']) && is_array($modelData['COMFORT_ITEMS']) ? $modelData['COMFORT_ITEMS'] : [];
-$safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY_ITEMS']) ? $modelData['SAFETY_ITEMS'] : [];
+// Brochure from IBLOCK property BROCHURE
+$brochureFile = '';
+if (!empty($arResult['PROPERTIES']['BROCHURE']['VALUE'])) {
+    $brochureFile = CFile::GetPath($arResult['PROPERTIES']['BROCHURE']['VALUE']);
+}
 
+// Accessories / Warranty file
 $warrantyFile = '';
 if (!empty($arResult['PROPERTIES']['WARRANTY_FILE']['VALUE'])) {
     $warrantyFile = CFile::GetPath($arResult['PROPERTIES']['WARRANTY_FILE']['VALUE']);
 }
+
+$slogan = !empty($modelData['SLOGAN']) ? $modelData['SLOGAN'] : 'СОЗДАН ДЛЯ РАБОТЫ';
+$warrantyBadges = !empty($modelData['WARRANTY_BADGES']) && is_array($modelData['WARRANTY_BADGES']) ? $modelData['WARRANTY_BADGES'] : [];
+$engineSpecs = !empty($modelData['ENGINE_SPECS']) && is_array($modelData['ENGINE_SPECS']) ? $modelData['ENGINE_SPECS'] : [];
+$comfortItems = !empty($modelData['COMFORT_ITEMS']) && is_array($modelData['COMFORT_ITEMS']) ? $modelData['COMFORT_ITEMS'] : [];
+$safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY_ITEMS']) ? $modelData['SAFETY_ITEMS'] : [];
 ?>
 
 <div class="model-landing">
-    <!-- 1. HERO BANNER (Frame 591, 1240x420, dark rounded card by Figma) -->
+    <!-- 1. HERO BANNER (1240x420 exact mockup with signature 2-corner rounding) -->
     <div class="container my-3 my-md-4">
-        <div class="model-hero-frame b-radius-yaradius-40 position-relative overflow-hidden">
-            <div class="row h-100 align-items-center position-relative z-index-2 p-4 p-md-5">
-                <div class="col-12 col-lg-7 text-white">
-                    <h1 class="model-hero-h1 fw-b-c text-uppercase mb-2">
-                        Sollers <?= htmlspecialcharsbx($name) ?>
-                    </h1>
-
-                    <div class="model-hero-slogan fw-b-c text-uppercase mb-3">
-                        <?= htmlspecialcharsbx($slogan) ?>
-                    </div>
-
-                    <?php if (!empty($warrantyBadges)): ?>
-                        <div class="model-hero-warranty mb-4">
-                            <?php foreach ($warrantyBadges as $badge): ?>
-                                <div class="warranty-badge-line d-flex align-items-center mb-1">
-                                    <span class="warranty-dot me-2"></span>
-                                    <span class="warranty-text"><?= htmlspecialcharsbx($badge) ?></span>
-                                </div>
-                            <?php endforeach; ?>
+        <?php if (!empty($bannerSrc)): ?>
+            <div class="model-hero-banner-image position-relative">
+                <img src="<?= htmlspecialcharsbx($bannerSrc) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?>" class="img-fluid w-100 d-block" />
+                <!-- Action hotspot over the button area -->
+                <a href="#feedback" class="model-hero-banner-hotspot" aria-label="Оставить заявку"></a>
+            </div>
+        <?php else: ?>
+            <div class="model-hero-banner position-relative p-4 p-md-5">
+                <div class="model-hero-content position-relative z-index-2 d-flex flex-column justify-content-between h-100">
+                    <div class="hero-top-group">
+                        <h1 class="model-hero-title fw-b-c mb-1 text-white">
+                            Sollers <?= htmlspecialcharsbx($name) ?>
+                        </h1>
+                        <div class="model-hero-slogan fw-b-c text-uppercase mb-3">
+                            <?= htmlspecialcharsbx($slogan) ?>
                         </div>
-                    <?php endif; ?>
-
-                    <?php if (!empty($priceText)): ?>
-                        <div class="model-hero-price fw-b-c mb-4">
-                            <?= htmlspecialcharsbx($priceText) ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <div class="model-hero-btn-wrap">
-                        <a href="#feedback" class="btn-model-hero d-inline-flex align-items-center justify-content-center text-decoration-none text-uppercase fw-b-c">
-                            <span>Оставить заявку</span>
-                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/svg/icon-button-corner.svg" class="ms-2" alt="" />
-                        </a>
+                        <?php if (!empty($warrantyBadges)): ?>
+                            <div class="model-hero-warranty mb-4 text-white">
+                                <?php foreach ($warrantyBadges as $badge): ?>
+                                    <div class="warranty-item mb-1"><?= htmlspecialcharsbx($badge) ?></div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
-                </div>
-
-                <div class="col-12 col-lg-5 text-center mt-4 mt-lg-0">
-                    <?php if (!empty($detailImg)): ?>
-                        <img src="<?= htmlspecialcharsbx($detailImg) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?>" class="model-hero-car-img img-fluid" />
-                    <?php endif; ?>
+                    <div class="hero-bottom-group mt-auto">
+                        <?php if (!empty($priceText)): ?>
+                            <div class="model-hero-price fw-b-c mb-3 text-white fs-2">
+                                <?= htmlspecialcharsbx($priceText) ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="model-hero-btn-wrap">
+                            <a href="#feedback" class="btn-hero-action text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
+                                ОСТАВИТЬ ЗАЯВКУ
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 
-    <!-- 2. ANCHOR NAVIGATION BAR (129:1078, dark background with links & pdf buttons) -->
-    <div class="model-anchor-nav-bar bg-yablack py-2 mb-5">
-        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+    <!-- 2. ANCHOR NAVIGATION BAR (Block 2 from mockup: light-gray #F3F3F3, dark links, action buttons) -->
+    <div class="model-anchor-nav-bar py-2 my-4">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="nav-links d-flex flex-wrap align-items-center">
+                <a href="#section-specs" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
+                    Технические характеристики
+                </a>
                 <?php if (!empty($engineSpecs)): ?>
-                    <a href="#section-specs" class="anchor-link text-decoration-none text-white text-uppercase small fw-bold me-4 py-2">
+                    <a href="#section-specs" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
                         Двигатель и управление
                     </a>
                 <?php endif; ?>
                 <?php if (!empty($comfortItems)): ?>
-                    <a href="#section-comfort" class="anchor-link text-decoration-none text-white text-uppercase small fw-bold me-4 py-2">
+                    <a href="#section-comfort" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
                         Комфорт
                     </a>
                 <?php endif; ?>
                 <?php if (!empty($safetyItems)): ?>
-                    <a href="#section-safety" class="anchor-link text-decoration-none text-white text-uppercase small fw-bold me-4 py-2">
+                    <a href="#section-safety" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
                         Технологии и безопасность
                     </a>
                 <?php endif; ?>
-                <a href="#section-choose" class="anchor-link text-decoration-none text-white text-uppercase small fw-bold py-2">
-                    Автомобили в наличии
-                </a>
             </div>
 
-            <div class="nav-docs d-flex align-items-center mt-2 mt-md-0">
-                <?php if (!empty($warrantyFile)): ?>
-                    <a href="<?= htmlspecialcharsbx($warrantyFile) ?>" target="_blank" class="btn-nav-doc text-decoration-none text-white text-uppercase small fw-bold me-2 px-3 py-1 border rounded">
-                        Брошюра
+            <div class="nav-actions d-flex flex-wrap align-items-center gap-2">
+                <!-- Кнопка «БРОШЮРА >» -->
+                <?php if (!empty($brochureFile)): ?>
+                    <a href="<?= htmlspecialcharsbx($brochureFile) ?>" target="_blank" class="btn-model-brochure text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
+                        <span class="me-2">БРОШЮРА</span>
+                        <svg class="brochure-arrow" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                            <path d="M1.5 1.5L6 6L1.5 10.5" stroke="#F37032" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                <?php else: ?>
+                    <a href="/owners/manuals/" class="btn-model-brochure text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
+                        <span class="me-2">БРОШЮРА</span>
+                        <svg class="brochure-arrow" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                            <path d="M1.5 1.5L6 6L1.5 10.5" stroke="#F37032" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                 <?php endif; ?>
-                <a href="/owners/manuals/" class="btn-nav-doc text-decoration-none text-white text-uppercase small fw-bold px-3 py-1 border rounded">
-                    Каталог аксессуаров
-                </a>
+
+                <!-- Кнопка «КАТАЛОГ АКСЕССУАРОВ» -->
+                <?php if (!empty($warrantyFile)): ?>
+                    <a href="<?= htmlspecialcharsbx($warrantyFile) ?>" target="_blank" class="btn-model-accessories text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
+                        КАТАЛОГ АКСЕССУАРОВ
+                    </a>
+                <?php else: ?>
+                    <a href="/owners/manuals/" class="btn-model-accessories text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
+                        КАТАЛОГ АКСЕССУАРОВ
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 
-    <!-- 3. ENGINE & SPECS (Двигатели и управление) -->
+    <!-- 3. SPECS SECTION: ДВИГАТЕЛИ И УПРАВЛЕНИЕ -->
     <?php if (!empty($engineSpecs)): ?>
     <section id="section-specs" class="model-section py-4 mb-5">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12">
-                    <h2 class="model-section-title fw-b-c text-uppercase">Двигатели и управление</h2>
+                    <h2 class="model-section-title fw-b-c text-uppercase mb-0">
+                        Двигатели и управление
+                    </h2>
                 </div>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-3 g-md-4">
                 <?php foreach ($engineSpecs as $spec): ?>
-                    <div class="col-6 col-md-3">
-                        <div class="model-spec-card bg-white b-radius-yaradius-16 p-4 h-100 border text-center">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="model-spec-card bg-white b-radius-yaradius-24 p-4 h-100 border text-center d-flex flex-column justify-content-between">
                             <div class="spec-label text-muted small text-uppercase mb-2">
-                                <?= htmlspecialcharsbx($spec['TITLE']) ?>
+                                <?= htmlspecialcharsbx($spec['LABEL']) ?>
                             </div>
-                            <div class="spec-value fw-b-c fs-2 c-yaorange mb-1">
+                            <div class="spec-value fw-b-c fs-1 c-yaorange my-2">
                                 <?= htmlspecialcharsbx($spec['VAL']) ?>
                             </div>
-                            <div class="spec-sub text-muted small">
+                            <div class="spec-sub text-muted small mt-auto">
                                 <?= htmlspecialcharsbx($spec['SUB']) ?>
                             </div>
                         </div>
@@ -148,44 +174,49 @@ if (!empty($arResult['PROPERTIES']['WARRANTY_FILE']['VALUE'])) {
     </section>
     <?php endif; ?>
 
-    <!-- 4. COMFORT CARDS SLIDER (Group 1000003902, 292x180 cards with icons) -->
+    <!-- 4. COMFORT SECTION (SLIDER, Group 1000003902) -->
     <?php if (!empty($comfortItems)): ?>
-    <section id="section-comfort" class="model-section py-5 mb-5 bg-white">
+    <section id="section-comfort" class="model-section py-4 mb-5 bg-light">
         <div class="container">
-            <div class="row mb-4 align-items-center justify-content-between">
-                <div class="col-auto">
-                    <h2 class="model-section-title fw-b-c text-uppercase mb-0">Комфорт</h2>
+            <div class="row align-items-center mb-4">
+                <div class="col">
+                    <h2 class="model-section-title fw-b-c text-uppercase mb-0">
+                        Комфорт
+                    </h2>
                 </div>
                 <div class="col-auto d-flex align-items-center gap-2">
-                    <button class="comfort-slider-btn prev-btn bg-white border rounded-circle d-flex align-items-center justify-content-center p-2" type="button" aria-label="Назад">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/svg/icon-slider-prev.svg" alt="" width="20" height="20" />
-                    </button>
-                    <button class="comfort-slider-btn next-btn bg-white border rounded-circle d-flex align-items-center justify-content-center p-2" type="button" aria-label="Вперед">
-                        <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/svg/icon-slider-next.svg" alt="" width="20" height="20" />
-                    </button>
+                    <div class="comfort-slider-btn prev-btn rounded-circle border bg-white d-flex align-items-center justify-content-center shadow-sm">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="comfort-slider-btn next-btn rounded-circle border bg-white d-flex align-items-center justify-content-center shadow-sm">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
                 </div>
             </div>
 
-            <div class="swiper comfort-swiper overflow-hidden">
+            <div class="swiper comfort-swiper pb-4">
                 <div class="swiper-wrapper">
-                    <?php foreach ($comfortItems as $idx => $item): ?>
-                        <div class="swiper-slide h-auto" style="width: 292px;">
-                            <div class="model-comfort-card bg-yawhite b-radius-yaradius-16 p-4 h-100 d-flex flex-column border">
-                                <div class="comfort-card-top d-flex align-items-center justify-content-between mb-3">
-                                    <div class="comfort-icon-badge bg-white rounded-circle p-2 border d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D15C22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <?php foreach ($comfortItems as $item): ?>
+                        <div class="swiper-slide" style="width: 320px; max-width: 85vw;">
+                            <div class="model-comfort-card b-radius-yaradius-24 p-4 h-100 border bg-white d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="comfort-icon-wrap mb-3 text-primary">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#002C6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <circle cx="12" cy="12" r="10"></circle>
                                             <polyline points="12 6 12 12 16 14"></polyline>
                                         </svg>
                                     </div>
-                                    <span class="comfort-num fw-b-c text-muted small">#0<?= $idx + 1 ?></span>
+                                    <h3 class="model-comfort-title fw-b-c fs-5 mb-2">
+                                        <?= htmlspecialcharsbx($item['TITLE']) ?>
+                                    </h3>
+                                    <p class="model-comfort-desc text-muted small mb-0">
+                                        <?= htmlspecialcharsbx($item['DESC']) ?>
+                                    </p>
                                 </div>
-                                <h3 class="comfort-card-title fw-b-c fs-5 mb-2">
-                                    <?= htmlspecialcharsbx($item['TITLE']) ?>
-                                </h3>
-                                <p class="comfort-card-desc text-muted small mb-0 mt-auto">
-                                    <?= htmlspecialcharsbx($item['DESC']) ?>
-                                </p>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -195,19 +226,21 @@ if (!empty($arResult['PROPERTIES']['WARRANTY_FILE']['VALUE'])) {
     </section>
     <?php endif; ?>
 
-    <!-- 5. SAFETY & TECH (Frame 1000003897, 2-column cards 608x387 with badges) -->
+    <!-- 5. SAFETY SECTION (3 CARDS, Frame 1000003897) -->
     <?php if (!empty($safetyItems)): ?>
-    <section id="section-safety" class="model-section py-5 mb-5">
+    <section id="section-safety" class="model-section py-4 mb-5">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12">
-                    <h2 class="model-section-title fw-b-c text-uppercase">Технологии и безопасность</h2>
+                    <h2 class="model-section-title fw-b-c text-uppercase mb-0">
+                        Технологии и безопасность
+                    </h2>
                 </div>
             </div>
 
             <div class="row g-4">
                 <?php foreach ($safetyItems as $item): ?>
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-md-4">
                         <div class="model-safety-card bg-white b-radius-yaradius-24 p-4 p-md-5 h-100 border d-flex flex-column justify-content-between">
                             <div>
                                 <div class="d-flex align-items-center justify-content-between mb-3">
