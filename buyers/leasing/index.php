@@ -22,90 +22,76 @@ $APPLICATION->SetTitle("Программа «Бонус за лизинг»: в�
 </div>
 
 <div class="container my-5">
-	<!-- Main conditions & Benefits (2 columns) -->
-	<div class="row g-4 g-lg-5">
+	<!-- Main conditions & Benefits (2 columns matching Figma 215:1785) -->
+	<div class="row g-4 g-lg-5" style="color: #292523; font-size: 16px; line-height: 22px;">
 		<!-- Left Column -->
 		<div class="col-12 col-lg-6 d-flex flex-column gap-4">
 			<!-- Advantage -->
-			<div>
-				<h3 class="fw-b-c text-black mb-4">Преимущество программы:</h3>
+			<div class="d-flex flex-column gap-3">
+				<h3 class="fw-b-c mb-0" style="font-size: 28px; line-height: normal; color: #292523;">Преимущество программы:</h3>
 				<ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Использование автомобиля без его приобретения в собственность позволяет покупателям оптимизировать структуру финансовых затрат. Программа финансовой поддержки создана, чтобы снизить размер лизинговых платежей для клиентов, сделав стоимость владения автомобилей SOLLERS более привлекательной.
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Использование автомобиля без его приобретения в собственность позволяет покупателям оптимизировать структуру финансовых затрат. Программа финансовой поддержки создана, чтобы снизить размер лизинговых платежей для клиентов, сделав стоимость владения автомобилей SOLLERS более привлекательной.</span>
 					</li>
 				</ul>
 			</div>
 
 			<!-- Who can use -->
-			<div>
-				<h3 class="fw-b-c text-black mb-4">Кто может воспользоваться:</h3>
+			<div class="d-flex flex-column gap-3">
+				<h3 class="fw-b-c mb-0" style="font-size: 28px; line-height: normal; color: #292523;">Кто может воспользоваться:</h3>
 				<ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Любое юридическое лицо, физическое лицо или индивидуальный предприниматель, приобретающий автомобили Sollers в&nbsp;лизинг.
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Любое юридическое лицо, физическое лицо или индивидуальный предприниматель, приобретающий автомобили Sollers в&nbsp;лизинг.</span>
 					</li>
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Малотоннажные автомобили: Sollers Argo (Арго) и&nbsp;Sollers SF5 (СФ5).
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Малотоннажные автомобили: Sollers Argo (Арго) и&nbsp;Sollers SF5 (СФ5).</span>
 					</li>
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Пикапы: Sollers ST6 (СТ6), Sollers ST8 (СТ8), Sollers ST9 (СТ9).
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Пикапы: Sollers ST6 (СТ6), Sollers ST8 (СТ8), Sollers ST9 (СТ9).</span>
 					</li>
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Минивэны Sollers SP7 (СП7)
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Минивэны Sollers SP7 (СП7)</span>
 					</li>
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Грузовые автомобили: Sollers TR50 (ТР50), Sollers TR80 (ТР80), Sollers TR120 (ТР120), Sollers TR180 (ТР180).
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Грузовые автомобили: Sollers TR50 (ТР50), Sollers TR80 (ТР80), Sollers TR120 (ТР120), Sollers TR180 (ТР180).</span>
 					</li>
 				</ul>
 			</div>
 
 			<!-- How to use -->
-			<div>
-				<h3 class="fw-b-c text-black mb-4">Как воспользоваться:</h3>
+			<div class="d-flex flex-column gap-3">
+				<h3 class="fw-b-c mb-0" style="font-size: 28px; line-height: normal; color: #292523;">Как воспользоваться:</h3>
 				<ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<div class="text-secondary" style="line-height: 1.5;">
-							<p class="mb-2">Предоставляется клиенту при обращении к&nbsp;официальному дилеру или в&nbsp;партнерскую лизинговую компанию.</p>
-							<p class="fw-bold mb-1 text-black">Список лизинговых компаний-партнёров:</p>
-							<ul class="list-unstyled mb-0 d-flex flex-column gap-1 text-secondary">
-								<li>ООО Альфа-Лизинг</li>
-								<li>ООО Балтийский лизинг</li>
-								<li>АО ВТБ Лизинг</li>
-								<li>АО Газпромбанк Лизинг (включая ООО «Каркаде» и ООО «Газпромбанк автолизинг»)</li>
-								<li>ПАО ЛК Европлан и ООО «Автолизинг»</li>
-								<li>ООО Мэйджор Лизинг</li>
-								<li>ООО ПСБ Лизинг</li>
-								<li>ООО РВБ Лизинг</li>
-								<li>ООО РЕСО-Лизинг</li>
-								<li>АО Сбербанк Лизинг</li>
-								<li>ООО Совкомбанк Лизинг</li>
-								<li>ООО СОЛЛЕРС Транспортные Решения</li>
-								<li>ООО Т‑Лизинг</li>
-								<li>ООО Восток‑лизинг</li>
-								<li>ООО ЛК СТОУН‑XXI</li>
-								<li>ООО Ген лизинг</li>
-								<li>АО Росагролизинг</li>
-								<li>ООО ОЗОН Лизинг</li>
-								<li>ООО Интерлизинг</li>
-							</ul>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<div>
+							<p class="mb-0">Предоставляется клиенту при обращении к&nbsp;официальному дилеру или в&nbsp;партнерскую лизинговую компанию.</p>
+							<p class="mb-0">Список лизинговых компаний-партнёров:</p>
+							<p class="mb-0">ООО Альфа-Лизинг</p>
+							<p class="mb-0">ООО Балтийский лизинг</p>
+							<p class="mb-0">АО ВТБ Лизинг</p>
+							<p class="mb-0">АО Газпромбанк Лизинг (включая ООО «Каркаде» и ООО «Газпромбанк автолизинг»)</p>
+							<p class="mb-0">ПАО ЛК Европлан и ООО «Автолизинг»</p>
+							<p class="mb-0">ООО Мэйджор Лизинг</p>
+							<p class="mb-0">ООО ПСБ Лизинг</p>
+							<p class="mb-0">ООО РВБ Лизинг</p>
+							<p class="mb-0">ООО РЕСО-Лизинг</p>
+							<p class="mb-0">АО Сбербанк Лизинг</p>
+							<p class="mb-0">ООО Совкомбанк Лизинг</p>
+							<p class="mb-0">ООО СОЛЛЕРС Транспортные Решения</p>
+							<p class="mb-0">ООО Т‑Лизинг</p>
+							<p class="mb-0">ООО Восток‑лизинг</p>
+							<p class="mb-0">ООО ЛК СТОУН‑XXI</p>
+							<p class="mb-0">ООО Ген лизинг</p>
+							<p class="mb-0">АО Росагролизинг</p>
+							<p class="mb-0">ООО ОЗОН Лизинг</p>
+							<p class="mb-0">ООО Интерлизинг</p>
 						</div>
 					</li>
 				</ul>
@@ -114,41 +100,80 @@ $APPLICATION->SetTitle("Программа «Бонус за лизинг»: в�
 
 		<!-- Right Column -->
 		<div class="col-12 col-lg-6 d-flex flex-column gap-4">
-			<div>
-				<h3 class="fw-b-c text-black mb-4">Что важно знать о программе:</h3>
+			<!-- What is important to know (Block 1) -->
+			<div class="d-flex flex-column gap-3">
+				<h3 class="fw-b-c mb-0" style="font-size: 28px; line-height: normal; color: #292523;">Что важно знать о программе:</h3>
 				<ul class="list-unstyled d-flex flex-column gap-3 mb-0">
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<div class="text-secondary" style="line-height: 1.5;">
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<div>
 							<p class="mb-2">Выгода по&nbsp;программе «Бонус за&nbsp;лизинг» составляет:</p>
-							<ul class="ps-3 mb-0 d-flex flex-column gap-2 text-secondary">
-								<li>до&nbsp;500&nbsp;000&nbsp;руб. на автомобили Sollers TR50 (ТР50), Sollers TR80 (ТР80), Sollers TR120 (ТР120), Sollers TR180 (ТР180), включая шасси и специальные версии*.</li>
-								<li>до&nbsp;400&nbsp;000&nbsp;руб. на автомобили Sollers SF5 (СФ5) в модификациях промтоварный, изотермический фургон или бортовая платформа, распространяется на автомобили независимо от года выпуска автомобиля.</li>
-								<li>до&nbsp;500&nbsp;000&nbsp;руб. на автомобили Sollers SF5 (СФ5) в модификации автобус.</li>
-								<li>до&nbsp;100&nbsp;000&nbsp;руб. на автомобили Sollers Argo (Арго) и модификации на его основе. Действует на автомобили, независимо от года выпуска.</li>
-								<li>до&nbsp;100&nbsp;000&nbsp;руб. на автомобили Sollers ST6 (СТ6) и Sollers ST8 (СТ8) МКПП.</li>
-								<li>до&nbsp;150&nbsp;000&nbsp;руб. на автомобили Sollers ST9 (СТ9) и Sollers ST8 (СТ8) АКПП.</li>
-								<li>до&nbsp;300&nbsp;000&nbsp;руб. на автомобили Sollers SP7 (СП7).</li>
+							<ul class="list-unstyled ps-3 mb-0 d-flex flex-column gap-1">
+								<li class="position-relative ps-3">
+									<span class="position-absolute top-0 start-0" style="line-height: 22px;">•</span>
+									<span>до&nbsp;500&nbsp;000&nbsp;руб. на автомобили Sollers TR50 (ТР50), Sollers TR80 (ТР80), Sollers TR120 (ТР120), Sollers TR180 (ТР180), включая шасси и специальные версии*.</span>
+								</li>
+								<li class="position-relative ps-3">
+									<span class="position-absolute top-0 start-0" style="line-height: 22px;">•</span>
+									<span>до&nbsp;400&nbsp;000&nbsp;руб. на автомобили Sollers SF5 (СФ5) в модификациях промтоварный, изотермический фургон или бортовая платформа, распространяется на автомобили независимо от года выпуска автомобиля.</span>
+								</li>
+								<li class="position-relative ps-3">
+									<span class="position-absolute top-0 start-0" style="line-height: 22px;">•</span>
+									<span>до&nbsp;500&nbsp;000&nbsp;руб. на автомобили Sollers SF5 (СФ5) в модификации автобус.</span>
+								</li>
+								<li class="position-relative ps-3">
+									<span class="position-absolute top-0 start-0" style="line-height: 22px;">•</span>
+									<span>до&nbsp;100&nbsp;000&nbsp;руб. на автомобили Sollers Argo (Арго) и модификации на его основе. Действует на автомобили, независимо от года выпуска.</span>
+								</li>
+								<li class="position-relative ps-3">
+									<span class="position-absolute top-0 start-0" style="line-height: 22px;">•</span>
+									<span>до&nbsp;100&nbsp;000&nbsp;руб. на автомобили Sollers ST6 (СТ6) и Sollers ST8 (СТ8) МКПП.</span>
+								</li>
+								<li class="position-relative ps-3">
+									<span class="position-absolute top-0 start-0" style="line-height: 22px;">•</span>
+									<span>до&nbsp;150&nbsp;000&nbsp;руб. на автомобили Sollers ST9 (СТ9) и Sollers ST8 (СТ8) АКПП.</span>
+								</li>
+								<li class="position-relative ps-3">
+									<span class="position-absolute top-0 start-0" style="line-height: 22px;">•</span>
+									<span>до&nbsp;300&nbsp;000&nbsp;руб. на автомобили Sollers SP7 (СП7).</span>
+								</li>
 							</ul>
 						</div>
 					</li>
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Программа распространяется на&nbsp;автомобили SOLLERS, приобретаемые у&nbsp;официальных дилеров SOLLERS или в&nbsp;партнерских лизинговых компаниях.
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Программа распространяется на&nbsp;автомобили SOLLERS, приобретаемые у&nbsp;официальных дилеров SOLLERS или в&nbsp;партнерских лизинговых компаниях.</span>
 					</li>
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Программа «Бонус за лизинг» действует до 31.08.2026 и совместима с программой «3&nbsp;× ТО в подарок» для автомобилей Sollers SF5 (СФ5) и Sollers Argo (Арго).
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Программа «Бонус за лизинг» действует до 31.08.2026 и совместима с программой «3&nbsp;× ТО в подарок» для автомобилей Sollers SF5 (СФ5) и Sollers Argo (Арго).</span>
 					</li>
-					<li class="d-flex align-items-start">
-						<span class="rounded-circle bg-yaorange me-3 mt-2 flex-shrink-0" style="width: 6px; height: 6px;"></span>
-						<span class="text-secondary" style="line-height: 1.5;">
-							Программа «Бонус за лизинг» действует до 31.08.2026 и не совместима с другими программами для Sollers ST6 (СТ6), Sollers ST8 (СТ8), Sollers ST9, Sollers SP7 и Sollers TR50 (ТР50), Sollers TR80 (ТР80), Sollers TR120 (ТР120), Sollers TR180 (ТР180).
-						</span>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Программа «Бонус за лизинг» действует до 31.08.2026 и не совместима с другими программами для Sollers ST6 (СТ6), Sollers ST8 (СТ8), Sollers ST9, Sollers SP7 и Sollers TR50 (ТР50), Sollers TR80 (ТР80), Sollers TR120 (ТР120), Sollers TR180 (ТР180).</span>
+					</li>
+				</ul>
+			</div>
+
+			<!-- What is important to know (Block 2) -->
+			<div class="d-flex flex-column gap-3">
+				<h3 class="fw-b-c mb-0" style="font-size: 28px; line-height: normal; color: #292523;">Что важно знать о программе</h3>
+				<ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Кредитные программы распространяются на автомобили Sollers Argo, Sollers SF4 Sollers ST6, Sollers ST8, Sollers ST9 и Sollers SP7.</span>
+					</li>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Программа действует по 31.07.2026г.</span>
+					</li>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Оформление КАСКО на приобретаемый автомобиль не обязательно.</span>
+					</li>
+					<li class="position-relative ps-3">
+						<span class="position-absolute top-0 start-0 rounded-circle bg-yaorange" style="width: 5px; height: 5px; margin-top: 8px;"></span>
+						<span>Совместима только с программой «3 × ТО в подарок»</span>
 					</li>
 				</ul>
 			</div>
