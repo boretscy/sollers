@@ -115,102 +115,58 @@ $APPLICATION->SetTitle("Испытайте коммерческие автомо
 		</div>
 	</div>
 
-	<div class="row justify-content-center">
-		<div class="col-12">
-			<form class="p-4 p-md-5 bg-white b-radius-yaradius-40 b-radius-tr-bl-nr shadow-sm" name="FORM_TEST_DRIVE">
-				<input type="hidden" name="FORM_CODE" value="FORM_TEST_DRIVE" />
-				<input type="hidden" name="FORM_NAME" value="Запись на тест-драйв" />
-
-				<div class="row g-3 mb-3">
-					<div class="col-12 col-md-4">
-						<select class="form-select b-yagray b-radius-yaradius-8 px-3 py-2" name="MODEL" required>
-							<option value="" disabled selected>Модель автомобиля*</option>
-							<option value="Sollers Argo">Sollers Argo (Арго)</option>
-							<option value="Sollers SF4">Sollers SF4 (СФ4)</option>
-							<option value="Sollers SF5">Sollers SF5 (СФ5)</option>
-							<option value="Sollers ST6">Sollers ST6 (СТ6)</option>
-							<option value="Sollers ST8">Sollers ST8 (СТ8)</option>
-							<option value="Sollers ST9">Sollers ST9 (СТ9)</option>
-							<option value="Sollers SP7">Sollers SP7 (СП7)</option>
-							<option value="Sollers TR-серия">Sollers TR (грузовые)</option>
-						</select>
-					</div>
-					<div class="col-12 col-md-4">
-						<select class="form-select b-yagray b-radius-yaradius-8 px-3 py-2" name="REGION" required>
-							<option value="" disabled selected>Ваш регион*</option>
-							<option value="Краснодарский край">Краснодарский край</option>
-							<option value="Республика Адыгея">Республика Адыгея</option>
-							<option value="Другой регион">Другой регион</option>
-						</select>
-					</div>
-					<div class="col-12 col-md-4">
-						<input type="text" class="form-control b-yagray b-radius-yaradius-8 px-3 py-2" name="NAME" placeholder="ФИО*" required />
-					</div>
-				</div>
-
-				<div class="row g-3 mb-3">
-					<div class="col-12 col-md-4">
-						<input type="text" class="form-control b-yagray b-radius-yaradius-8 px-3 py-2" name="PHONE" placeholder="+7 ___ ___ __ __*" data-phone-pattern="+7 ___ ___ __ __" maxlength="16" required autocomplete="off" />
-					</div>
-					<div class="col-12 col-md-4">
-						<input type="email" class="form-control b-yagray b-radius-yaradius-8 px-3 py-2" name="EMAIL" placeholder="E-mail*" required />
-					</div>
-					<div class="col-12 col-md-4">
-						<input type="text" class="form-control b-yagray b-radius-yaradius-8 px-3 py-2" name="DATES" placeholder="Укажите длительность тест-драйва и даты" />
-					</div>
-				</div>
-
-				<div class="row g-3 mb-4">
-					<div class="col-12 col-md-8">
-						<input type="text" class="form-control b-yagray b-radius-yaradius-8 px-3 py-2" name="COMPANY_NAME" placeholder="Название юридического лица" />
-					</div>
-					<div class="col-12 col-md-4">
-						<input type="text" class="form-control b-yagray b-radius-yaradius-8 px-3 py-2" name="COMPANY_INN" placeholder="ИНН организации" />
-					</div>
-				</div>
-
-				<div class="row g-4 align-items-center">
-					<div class="col-12 col-lg-8">
-						<div class="d-flex flex-column gap-2">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="Y" id="AGREE_DATA" name="AGREE_DATA" required checked />
-								<label class="form-check-label text-secondary" for="AGREE_DATA" style="font-size: 13px;">
-									<noindex>Даю согласие на сбор и обработку моих персональных данных в соответствии с <a href="/about/personal-data-policy/" target="_blank" rel="nofollow" class="text-dark text-decoration-underline">политикой</a></noindex>
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="Y" id="AGREE_ADS" name="AGREE_ADS" />
-								<label class="form-check-label text-secondary" for="AGREE_ADS" style="font-size: 13px;">
-									<noindex>Даю согласие на&nbsp;получение информации рекламного характера</noindex>
-								</label>
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="Y" id="AGREE_INTERVIEW" name="AGREE_INTERVIEW" />
-								<label class="form-check-label text-secondary" for="AGREE_INTERVIEW" style="font-size: 13px;">
-									<noindex>Даю согласие на&nbsp;прохождение интервью по&nbsp;итогу тест-драйва</noindex>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-4 text-lg-end">
-						<a href="#" role="sendForm" class="form-button bg-yaorange b-radius-yaradius-8 c-yawhite c-h-yawhite text-decoration-none text-uppercase px-4 py-3 d-inline-flex justify-content-center align-items-center fw-b-c w-100" style="letter-spacing: 0.5px;">
-							Запланировать
-						</a>
-						<div class="text-secondary mt-2 text-start text-lg-end" style="font-size: 12px;">
-							* — поля, обязательные для заполнения
-						</div>
-					</div>
-				</div>
-
-				<div class="alert alert-danger text-center mt-3 d-none">
-					<noindex>Ой, что-то пошло не так.<br />Повторите попытку позднее.</noindex>
-				</div>
-				<div class="alert alert-success text-center mt-3 d-none">
-					<noindex>Спасибо! Ваша заявка успешно отправлена.<br />Наш специалист свяжется с Вами в ближайшее время.</noindex>
-				</div>
-			</form>
-		</div>
-	</div>
+	<?$APPLICATION->IncludeComponent(
+		"bitrix:news.detail",
+		"form.test-drive",
+		Array(
+			"ACTIVE_DATE_FORMAT" => "d.m.Y",
+			"ADD_ELEMENT_CHAIN" => "N",
+			"ADD_SECTIONS_CHAIN" => "N",
+			"AJAX_MODE" => "N",
+			"AJAX_OPTION_ADDITIONAL" => "",
+			"AJAX_OPTION_HISTORY" => "N",
+			"AJAX_OPTION_JUMP" => "N",
+			"AJAX_OPTION_STYLE" => "Y",
+			"BROWSER_TITLE" => "-",
+			"CACHE_GROUPS" => "Y",
+			"CACHE_TIME" => "36000000",
+			"CACHE_TYPE" => "A",
+			"CHECK_DATES" => "Y",
+			"DETAIL_URL" => "",
+			"DISPLAY_BOTTOM_PAGER" => "N",
+			"DISPLAY_DATE" => "N",
+			"DISPLAY_NAME" => "Y",
+			"DISPLAY_PICTURE" => "N",
+			"DISPLAY_PREVIEW_TEXT" => "N",
+			"DISPLAY_TOP_PAGER" => "N",
+			"ELEMENT_CODE" => "FORM_TEST_DRIVE",
+			"ELEMENT_ID" => "",
+			"FIELD_CODE" => ["ID", "CODE", "NAME"],
+			"IBLOCK_ID" => "6",
+			"IBLOCK_TYPE" => "content",
+			"IBLOCK_URL" => "",
+			"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+			"MESSAGE_404" => "",
+			"META_DESCRIPTION" => "-",
+			"META_KEYWORDS" => "-",
+			"PAGER_BASE_LINK_ENABLE" => "N",
+			"PAGER_SHOW_ALL" => "N",
+			"PAGER_TEMPLATE" => ".default",
+			"PAGER_TITLE" => "Страница",
+			"PROPERTY_CODE" => ["FIELDS"],
+			"SET_BROWSER_TITLE" => "N",
+			"SET_CANONICAL_URL" => "N",
+			"SET_LAST_MODIFIED" => "N",
+			"SET_META_DESCRIPTION" => "N",
+			"SET_META_KEYWORDS" => "N",
+			"SET_STATUS_404" => "N",
+			"SET_TITLE" => "N",
+			"SHOW_404" => "N",
+			"STRICT_SECTION_CHECK" => "N",
+			"USE_PERMISSIONS" => "N",
+			"USE_SHARE" => "N"
+		)
+	);?>
 </div>
 
 <?php require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"); ?>
