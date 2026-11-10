@@ -1,72 +1,168 @@
-.model-hero-card {
-    background-color: #F8F9FA;
-    border: 1px solid #E9ECEF;
+/* MODEL HERO BANNER (Frame 591 by Figma) */
+.model-hero-frame {
+    background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 50%, #151515 100%);
+    min-height: 420px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-.model-hero-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1A1A1A;
+.model-hero-h1 {
+    font-size: 2.75rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
 }
 
 .model-hero-slogan {
+    font-size: 1.25rem;
+    color: #D15C22;
     letter-spacing: 0.05em;
-    font-size: 1.1rem;
 }
 
-.model-main-img {
-    max-height: 420px;
+.warranty-badge-line .warranty-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #D15C22;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.warranty-badge-line .warranty-text {
+    font-size: 0.95rem;
+    color: #CCCCCC;
+}
+
+.model-hero-price {
+    font-size: 2.2rem;
+    color: #FFFFFF;
+}
+
+.btn-model-hero {
+    background-color: #D15C22;
+    color: #FFFFFF;
+    padding: 16px 36px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-model-hero:hover {
+    background-color: #b84b15;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.model-hero-car-img {
+    max-height: 340px;
     object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
     transition: transform 0.3s ease;
 }
 
-.model-main-img:hover {
-    transform: scale(1.02);
+.model-hero-car-img:hover {
+    transform: scale(1.03);
 }
 
-.spec-card {
+/* ANCHOR NAV BAR (129:1078 by Figma) */
+.model-anchor-nav-bar {
+    background-color: #292523;
+}
+
+.model-anchor-nav-bar .anchor-link {
+    color: #FFFFFF;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.model-anchor-nav-bar .anchor-link:hover {
+    opacity: 1;
+    color: #D15C22;
+    border-bottom-color: #D15C22;
+}
+
+.btn-nav-doc {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-nav-doc:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #FFFFFF !important;
+}
+
+/* SECTION TITLES */
+.model-section-title {
+    font-size: 2rem;
+    color: #292523;
+    letter-spacing: -0.01em;
+}
+
+/* SPECS */
+.model-spec-card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.spec-card:hover {
+.model-spec-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
-.comfort-card {
-    background-color: #FAFAFA;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* COMFORT SLIDER (Group 1000003902) */
+.model-comfort-card {
+    background-color: #F8F9FA;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.comfort-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+.model-comfort-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     background-color: #FFFFFF;
 }
 
-.safety-card {
+.comfort-slider-btn {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.comfort-slider-btn:hover {
+    background-color: #F0F0F0;
+    transform: scale(1.05);
+}
+
+/* SAFETY CARDS (Frame 1000003897) */
+.model-safety-card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.safety-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+.model-safety-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-.model-cta-card {
-    background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+/* ACTION BUTTONS (Frame 1000003906) */
+.btn-model-action {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.max-w-600 {
-    max-width: 600px;
+.btn-model-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 @media (max-width: 991.98px) {
-    .model-hero-title {
-        font-size: 2rem;
+    .model-hero-h1 {
+        font-size: 2.2rem;
     }
-    .model-main-img {
-        max-height: 300px;
-        margin-top: 1rem;
+    .model-hero-price {
+        font-size: 1.8rem;
+    }
+    .model-hero-car-img {
+        max-height: 240px;
+    }
+    .model-section-title {
+        font-size: 1.6rem;
     }
 }
