@@ -39,6 +39,7 @@ $warrantyBadges = !empty($modelData['WARRANTY_BADGES']) && is_array($modelData['
 $engineSpecs = !empty($modelData['ENGINE_SPECS']) && is_array($modelData['ENGINE_SPECS']) ? $modelData['ENGINE_SPECS'] : [];
 $comfortItems = !empty($modelData['COMFORT_ITEMS']) && is_array($modelData['COMFORT_ITEMS']) ? $modelData['COMFORT_ITEMS'] : [];
 $safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY_ITEMS']) ? $modelData['SAFETY_ITEMS'] : [];
+$gallery = !empty($modelData['GALLERY']) && is_array($modelData['GALLERY']) ? $modelData['GALLERY'] : [];
 ?>
 
 <div class="model-landing">
@@ -85,86 +86,74 @@ $safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY
         <?php endif; ?>
     </div>
 
-    <!-- 2. ANCHOR NAVIGATION BAR (Block 2 from mockup: light-gray #F3F3F3, dark links, action buttons) -->
-    <div class="model-anchor-nav-bar py-2 my-4">
+    <!-- 2. ANCHOR NAVIGATION BAR (Block 2 from mockup: light-gray #F3F3F3, sticky-top, dark links) -->
+    <div class="model-anchor-nav-bar py-2 mb-4 sticky-top">
         <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="nav-links d-flex flex-wrap align-items-center">
-                <a href="#section-specs" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
+                <a href="#section-specs" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
                     Технические характеристики
                 </a>
-                <?php if (!empty($engineSpecs)): ?>
-                    <a href="#section-specs" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
-                        Двигатель и управление
-                    </a>
-                <?php endif; ?>
-                <?php if (!empty($comfortItems)): ?>
-                    <a href="#section-comfort" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
-                        Комфорт
-                    </a>
-                <?php endif; ?>
-                <?php if (!empty($safetyItems)): ?>
-                    <a href="#section-safety" class="anchor-link text-decoration-none fw-b-c me-3 me-md-4 py-2">
-                        Технологии и безопасность
+                <a href="#section-engine" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
+                    Двигатель и управление
+                </a>
+                <a href="#section-comfort" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
+                    Комфорт
+                </a>
+                <a href="#section-safety" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
+                    Технологии и безопасность
+                </a>
+                <?php if (!empty($gallery)): ?>
+                    <a href="#section-gallery" class="nav-item-link text-decoration-none fw-bold small text-uppercase">
+                        Галерея
                     </a>
                 <?php endif; ?>
             </div>
-
-            <div class="nav-actions d-flex flex-wrap align-items-center gap-2">
-                <!-- Кнопка «БРОШЮРА >» -->
+            <div class="nav-actions d-flex align-items-center gap-2">
                 <?php if (!empty($brochureFile)): ?>
-                    <a href="<?= htmlspecialcharsbx($brochureFile) ?>" target="_blank" class="btn-model-brochure text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
-                        <span class="me-2">БРОШЮРА</span>
-                        <svg class="brochure-arrow" width="8" height="12" viewBox="0 0 8 12" fill="none">
-                            <path d="M1.5 1.5L6 6L1.5 10.5" stroke="#F37032" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                <?php else: ?>
-                    <a href="/owners/manuals/" class="btn-model-brochure text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
-                        <span class="me-2">БРОШЮРА</span>
-                        <svg class="brochure-arrow" width="8" height="12" viewBox="0 0 8 12" fill="none">
-                            <path d="M1.5 1.5L6 6L1.5 10.5" stroke="#F37032" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <a href="<?= htmlspecialcharsbx($brochureFile) ?>" target="_blank" class="btn-subnav-action border b-radius-yaradius-8 px-3 py-2 text-decoration-none small fw-bold text-uppercase d-inline-flex align-items-center">
+                        <span class="me-2">Брошюра</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
                     </a>
                 <?php endif; ?>
-
-                <!-- Кнопка «КАТАЛОГ АКСЕССУАРОВ» -->
                 <?php if (!empty($warrantyFile)): ?>
-                    <a href="<?= htmlspecialcharsbx($warrantyFile) ?>" target="_blank" class="btn-model-accessories text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
-                        КАТАЛОГ АКСЕССУАРОВ
-                    </a>
-                <?php else: ?>
-                    <a href="/owners/manuals/" class="btn-model-accessories text-decoration-none text-uppercase fw-b-c d-inline-flex align-items-center justify-content-center">
-                        КАТАЛОГ АКСЕССУАРОВ
+                    <a href="<?= htmlspecialcharsbx($warrantyFile) ?>" target="_blank" class="btn-subnav-action border b-radius-yaradius-8 px-3 py-2 text-decoration-none small fw-bold text-uppercase d-inline-flex align-items-center">
+                        <span class="me-2">Каталог аксессуаров</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
                     </a>
                 <?php endif; ?>
             </div>
         </div>
     </div>
 
-    <!-- 3. SPECS SECTION: ДВИГАТЕЛИ И УПРАВЛЕНИЕ -->
-    <?php if (!empty($engineSpecs)): ?>
-    <section id="section-specs" class="model-section py-4 mb-5">
+    <!-- 3. SPECS & ENGINE SECTION -->
+    <section id="section-specs" class="model-section py-4 my-3">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12">
-                    <h2 class="model-section-title fw-b-c text-uppercase mb-0">
-                        Двигатели и управление
+                    <h2 class="model-section-title fw-b-c text-uppercase">
+                        Двигатель и управление
                     </h2>
                 </div>
             </div>
 
-            <div class="row g-3 g-md-4">
+            <div class="row g-4" id="section-engine">
                 <?php foreach ($engineSpecs as $spec): ?>
                     <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="model-spec-card bg-white b-radius-yaradius-24 p-4 h-100 border text-center d-flex flex-column justify-content-between">
-                            <div class="spec-label text-muted small text-uppercase mb-2">
-                                <?= htmlspecialcharsbx($spec['LABEL']) ?>
+                        <div class="spec-card bg-yawhite b-radius-24 p-4 h-100 d-flex flex-column justify-content-between border">
+                            <div class="spec-title text-muted text-uppercase small fw-bold mb-3">
+                                <?= htmlspecialcharsbx($spec['TITLE']) ?>
                             </div>
-                            <div class="spec-value fw-b-c fs-1 c-yaorange my-2">
-                                <?= htmlspecialcharsbx($spec['VAL']) ?>
-                            </div>
-                            <div class="spec-sub text-muted small mt-auto">
-                                <?= htmlspecialcharsbx($spec['SUB']) ?>
+                            <div class="spec-val-wrap my-auto">
+                                <div class="spec-val fw-b-c display-6 mb-1 text-primary">
+                                    <?= htmlspecialcharsbx($spec['VAL']) ?>
+                                </div>
+                                <div class="spec-sub text-muted small">
+                                    <?= htmlspecialcharsbx($spec['SUB']) ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -172,48 +161,48 @@ $safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY
             </div>
         </div>
     </section>
-    <?php endif; ?>
 
-    <!-- 4. COMFORT SECTION (SLIDER, Group 1000003902) -->
+    <!-- 4. COMFORT SECTION (Slider/Cards with image and signature details) -->
     <?php if (!empty($comfortItems)): ?>
-    <section id="section-comfort" class="model-section py-4 mb-5 bg-light">
+    <section id="section-comfort" class="model-section py-5 my-4 bg-yawhite">
         <div class="container">
-            <div class="row align-items-center mb-4">
-                <div class="col">
-                    <h2 class="model-section-title fw-b-c text-uppercase mb-0">
-                        Комфорт
-                    </h2>
-                </div>
-                <div class="col-auto d-flex align-items-center gap-2">
-                    <div class="comfort-slider-btn prev-btn rounded-circle border bg-white d-flex align-items-center justify-content-center shadow-sm">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </div>
-                    <div class="comfort-slider-btn next-btn rounded-circle border bg-white d-flex align-items-center justify-content-center shadow-sm">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </div>
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h2 class="model-section-title fw-b-c text-uppercase mb-0">
+                    Комфорт
+                </h2>
+                <div class="comfort-slider-arrows d-none d-md-flex align-items-center gap-2">
+                    <button type="button" class="comfort-slider-btn prev-btn rounded-circle border d-flex align-items-center justify-content-center" aria-label="Назад">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button type="button" class="comfort-slider-btn next-btn rounded-circle border d-flex align-items-center justify-content-center" aria-label="Вперед">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
                 </div>
             </div>
 
-            <div class="swiper comfort-swiper pb-4">
+            <div class="comfort-swiper swiper">
                 <div class="swiper-wrapper">
                     <?php foreach ($comfortItems as $item): ?>
-                        <div class="swiper-slide" style="width: 320px; max-width: 85vw;">
-                            <div class="model-comfort-card b-radius-yaradius-24 p-4 h-100 border bg-white d-flex flex-column justify-content-between">
-                                <div>
-                                    <div class="comfort-icon-wrap mb-3 text-primary">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#002C6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <polyline points="12 6 12 12 16 14"></polyline>
-                                        </svg>
-                                    </div>
-                                    <h3 class="model-comfort-title fw-b-c fs-5 mb-2">
+                        <div class="swiper-slide comfort-slide" style="width: 300px;">
+                            <div class="comfort-card bg-white b-radius-24 overflow-hidden border h-100 d-flex flex-column">
+                                <div class="comfort-card-img" style="height: 180px; background-color: #f8f9fa;">
+                                    <?php if (!empty($item['IMG'])): ?>
+                                        <img src="<?= htmlspecialcharsbx($item['IMG']) ?>" alt="<?= htmlspecialcharsbx($item['TITLE']) ?>" class="w-100 h-100 object-fit-cover d-block" />
+                                    <?php else: ?>
+                                        <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted">
+                                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                                <polyline points="21 15 16 10 5 21"/>
+                                            </svg>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="comfort-card-body p-4 d-flex flex-column flex-grow-1">
+                                    <h3 class="comfort-card-title fw-b-c fs-6 mb-2">
                                         <?= htmlspecialcharsbx($item['TITLE']) ?>
                                     </h3>
-                                    <p class="model-comfort-desc text-muted small mb-0">
+                                    <p class="comfort-card-desc text-muted small mb-0 mt-auto">
                                         <?= htmlspecialcharsbx($item['DESC']) ?>
                                     </p>
                                 </div>
@@ -226,13 +215,13 @@ $safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY
     </section>
     <?php endif; ?>
 
-    <!-- 5. SAFETY SECTION (3 CARDS, Frame 1000003897) -->
+    <!-- 5. SAFETY & TECHNOLOGY SECTION (6 cards with top image 608x218 by mockup) -->
     <?php if (!empty($safetyItems)): ?>
-    <section id="section-safety" class="model-section py-4 mb-5">
+    <section id="section-safety" class="model-section py-5 my-4">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12">
-                    <h2 class="model-section-title fw-b-c text-uppercase mb-0">
+                    <h2 class="model-section-title fw-b-c text-uppercase">
                         Технологии и безопасность
                     </h2>
                 </div>
@@ -240,23 +229,30 @@ $safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY
 
             <div class="row g-4">
                 <?php foreach ($safetyItems as $item): ?>
-                    <div class="col-12 col-md-4">
-                        <div class="model-safety-card bg-white b-radius-yaradius-24 p-4 p-md-5 h-100 border d-flex flex-column justify-content-between">
-                            <div>
-                                <div class="d-flex align-items-center justify-content-between mb-3">
-                                    <span class="safety-badge px-3 py-1 rounded-pill small fw-bold text-uppercase bg-light text-primary border">
-                                        <?= htmlspecialcharsbx($item['BADGE'] ?? 'SAFETY') ?>
-                                    </span>
-                                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#002C6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                    </svg>
+                    <div class="col-12 col-md-6">
+                        <div class="safety-card bg-white b-radius-24 overflow-hidden h-100 border d-flex flex-column">
+                            <?php if (!empty($item['IMG'])): ?>
+                                <div class="safety-card-img" style="height: 220px; overflow: hidden; background: #eef1f5;">
+                                    <img src="<?= htmlspecialcharsbx($item['IMG']) ?>" alt="<?= htmlspecialcharsbx($item['TITLE']) ?>" class="w-100 h-100 object-fit-cover d-block" />
                                 </div>
-                                <h3 class="model-safety-title fw-b-c fs-4 mb-3">
-                                    <?= htmlspecialcharsbx($item['TITLE']) ?>
-                                </h3>
-                                <p class="model-safety-desc text-muted mb-0">
-                                    <?= htmlspecialcharsbx($item['DESC']) ?>
-                                </p>
+                            <?php endif; ?>
+                            <div class="p-4 p-md-5 d-flex flex-column flex-grow-1 justify-content-between">
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <span class="safety-badge px-3 py-1 rounded-pill small fw-bold text-uppercase bg-light text-primary border">
+                                            <?= htmlspecialcharsbx($item['BADGE'] ?? 'SAFETY') ?>
+                                        </span>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#002C6C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="model-safety-title fw-b-c fs-4 mb-3">
+                                        <?= htmlspecialcharsbx($item['TITLE']) ?>
+                                    </h3>
+                                    <p class="model-safety-desc text-muted mb-0">
+                                        <?= htmlspecialcharsbx($item['DESC']) ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -266,7 +262,76 @@ $safetyItems = !empty($modelData['SAFETY_ITEMS']) && is_array($modelData['SAFETY
     </section>
     <?php endif; ?>
 
-    <!-- 6. ACTION BUTTONS (Frame 1000003906, 3 wide buttons by Figma) -->
+    <!-- 6. GALLERY SECTION (Exact 7-photo asymmetrical layout from Figma Frame 205:1189) -->
+    <?php if (!empty($gallery)): ?>
+    <section id="section-gallery" class="model-section py-5 my-4 bg-yawhite">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="model-section-title fw-b-c text-uppercase">
+                        Галерея <?= htmlspecialcharsbx($name) ?>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Asymmetrical 7-photo grid -->
+            <div class="model-gallery-grid">
+                <!-- Col 1: 2 items (310x190) -->
+                <div class="gallery-col col-left">
+                    <?php if (!empty($gallery[0])): ?>
+                        <div class="gallery-item-wrap item-small">
+                            <img src="<?= htmlspecialcharsbx($gallery[0]) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?> 1" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" />
+                        </div>
+                    <?php endif; ?>
+                    <?php if (!empty($gallery[1])): ?>
+                        <div class="gallery-item-wrap item-small">
+                            <img src="<?= htmlspecialcharsbx($gallery[1]) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?> 2" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" />
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Col 2: 1 tall item (310x380) -->
+                <div class="gallery-col col-mid-tall">
+                    <?php if (!empty($gallery[2])): ?>
+                        <div class="gallery-item-wrap item-tall">
+                            <img src="<?= htmlspecialcharsbx($gallery[2]) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?> 3" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" />
+                        </div>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Col 3: Right group (top: narrow + wide; bottom: 2 normal) -->
+                <div class="gallery-col col-right-group">
+                    <div class="gallery-right-top">
+                        <?php if (!empty($gallery[3])): ?>
+                            <div class="gallery-item-wrap item-narrow">
+                                <img src="<?= htmlspecialcharsbx($gallery[3]) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?> 4" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" />
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($gallery[4])): ?>
+                            <div class="gallery-item-wrap item-wide">
+                                <img src="<?= htmlspecialcharsbx($gallery[4]) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?> 5" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" />
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="gallery-right-bottom">
+                        <?php if (!empty($gallery[5])): ?>
+                            <div class="gallery-item-wrap item-half">
+                                <img src="<?= htmlspecialcharsbx($gallery[5]) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?> 6" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" />
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!empty($gallery[6])): ?>
+                            <div class="gallery-item-wrap item-half">
+                                <img src="<?= htmlspecialcharsbx($gallery[6]) ?>" alt="Sollers <?= htmlspecialcharsbx($name) ?> 7" class="img-fluid w-100 h-100 object-fit-cover" loading="lazy" />
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
+
+    <!-- 7. ACTION BUTTONS (Frame 1000003906, 3 wide buttons by Figma) -->
     <section id="section-choose" class="model-section py-5 mb-5 bg-white">
         <div class="container">
             <div class="row mb-4">

@@ -1,0 +1,154 @@
+
+/* ==========================================================================
+   SOLLERS MODEL LANDING (Figma Frame 129:668 / 205:1189)
+   ========================================================================== */
+
+.model-anchor-nav-bar {
+    background: #F3F3F3;
+    z-index: 1020;
+    transition: all 0.3s ease;
+}
+
+.model-anchor-nav-bar .nav-item-link {
+    color: #111111;
+    letter-spacing: 0.5px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.model-anchor-nav-bar .nav-item-link:hover {
+    color: #FF5A00;
+}
+
+.model-anchor-nav-bar .btn-subnav-action {
+    color: #111111;
+    background: #FFFFFF;
+    transition: all 0.2s ease;
+}
+
+.model-anchor-nav-bar .btn-subnav-action:hover {
+    background: #111111;
+    color: #FFFFFF;
+}
+
+/* Comfort Slider */
+.comfort-slider-btn {
+    width: 44px;
+    height: 44px;
+    background: #FFFFFF;
+    color: #111111;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.comfort-slider-btn:hover {
+    background: #111111;
+    color: #FFFFFF;
+}
+
+/* 7-Photo Asymmetrical Gallery */
+.model-gallery-grid {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.model-gallery-grid .gallery-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.model-gallery-grid .col-left {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.model-gallery-grid .col-mid-tall {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.model-gallery-grid .col-right-group {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.model-gallery-grid .gallery-right-top {
+    display: flex;
+    gap: 12px;
+    height: 190px;
+}
+
+.model-gallery-grid .gallery-right-bottom {
+    display: flex;
+    gap: 12px;
+    height: 190px;
+}
+
+.model-gallery-grid .item-small {
+    height: 190px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.model-gallery-grid .item-tall {
+    height: 392px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.model-gallery-grid .item-narrow {
+    flex: 0 0 33.333%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.model-gallery-grid .item-wide {
+    flex: 0 0 calc(66.666% - 12px);
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.model-gallery-grid .item-half {
+    flex: 0 0 calc(50% - 6px);
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.model-gallery-grid img {
+    transition: transform 0.4s ease;
+}
+
+.model-gallery-grid .gallery-item-wrap:hover img {
+    transform: scale(1.04);
+}
+
+@media (max-width: 991px) {
+    .model-gallery-grid {
+        flex-direction: column;
+    }
+    .model-gallery-grid .col-left,
+    .model-gallery-grid .col-mid-tall,
+    .model-gallery-grid .col-right-group {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .model-gallery-grid .item-tall {
+        height: 240px;
+    }
+    .model-gallery-grid .gallery-right-top,
+    .model-gallery-grid .gallery-right-bottom {
+        height: auto;
+    }
+    .model-gallery-grid .item-small,
+    .model-gallery-grid .item-narrow,
+    .model-gallery-grid .item-wide,
+    .model-gallery-grid .item-half {
+        height: 180px;
+    }
+}
