@@ -27,6 +27,7 @@
             $Asset->addCss(SITE_TEMPLATE_PATH.'/assets/fonts/font.css?'.@md5_file($_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/assets/fonts/font.css'));
             $Asset->addCss(SITE_TEMPLATE_PATH.'/assets/css/forms.css?'.@md5_file($_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/assets/css/forms.css'));
             $Asset->addCss(SITE_TEMPLATE_PATH.'/assets/css/app.css?'.@md5_file($_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/assets/css/app.css'));
+            $Asset->addCss(SITE_TEMPLATE_PATH.'/assets/css/custom.css?'.@md5_file($_SERVER['DOCUMENT_ROOT'].SITE_TEMPLATE_PATH.'/assets/css/custom.css'));
 
             $Asset->addJs(SITE_TEMPLATE_PATH.'/assets/js/libs/jquery.min.js');
             $Asset->addJs(SITE_TEMPLATE_PATH.'/assets/js/libs/swiper-bundle.min.js');

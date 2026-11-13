@@ -164,7 +164,7 @@ $gallery = !empty($modelData['GALLERY']) && is_array($modelData['GALLERY']) ? $m
 
     <!-- 4. COMFORT SECTION (Slider/Cards with image and signature details) -->
     <?php if (!empty($comfortItems)): ?>
-    <section id="section-comfort" class="model-section py-5 my-4 bg-yawhite">
+    <section id="section-comfort" class="model-section py-5 my-4 model-section-bg-gray">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <h2 class="model-section-title fw-b-c text-uppercase mb-0">
@@ -264,7 +264,7 @@ $gallery = !empty($modelData['GALLERY']) && is_array($modelData['GALLERY']) ? $m
 
     <!-- 6. GALLERY SECTION (Exact 7-photo asymmetrical layout from Figma Frame 205:1189) -->
     <?php if (!empty($gallery)): ?>
-    <section id="section-gallery" class="model-section py-5 my-4 bg-yawhite">
+    <section id="section-gallery" class="model-section py-5 my-4 model-section-bg-gray">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-12">

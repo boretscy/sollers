@@ -152,3 +152,71 @@
         height: 180px;
     }
 }
+
+/* Блоки с серым фоном по макету Figma (#F3F3F3) */
+.model-section-bg-gray {
+    background-color: #F3F3F3 !important;
+}
+
+.model-section-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #292523;
+    letter-spacing: -0.02em;
+}
+
+/* Карточки Двигателя */
+.spec-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spec-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.spec-val {
+    font-size: 42px;
+    line-height: 1.1;
+    color: #292523 !important;
+}
+
+/* Карточки Комфорта */
+.comfort-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comfort-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Карточки Безопасности */
+.safety-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.safety-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.safety-badge {
+    background-color: #F3F4F6 !important;
+    color: #111111 !important;
+    border: 1px solid #E5E7EB !important;
+    letter-spacing: 0.05em;
+}
