@@ -86,78 +86,238 @@ $gallery = !empty($modelData['GALLERY']) && is_array($modelData['GALLERY']) ? $m
         <?php endif; ?>
     </div>
 
-    <!-- 2. ANCHOR NAVIGATION BAR (Block 2 from mockup: light-gray #F3F3F3, sticky-top, dark links) -->
-    <div class="model-anchor-nav-bar py-2 mb-4 sticky-top">
+    <!-- 2. ANCHOR NAVIGATION BAR (Block 2 from mockup: exact buttons BROCHURE and ACCESSORIES) -->
+    <div class="model-anchor-nav-bar py-3 mb-4 sticky-top">
         <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
             <div class="nav-links d-flex flex-wrap align-items-center">
-                <a href="#section-specs" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
+                <a href="#section-specs" class="nav-item-link me-4 text-decoration-none fw-semibold">
                     Технические характеристики
                 </a>
-                <a href="#section-engine" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
+                <a href="#section-engine" class="nav-item-link me-4 text-decoration-none fw-semibold">
                     Двигатель и управление
                 </a>
-                <a href="#section-comfort" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
+                <a href="#section-comfort" class="nav-item-link me-4 text-decoration-none fw-semibold">
                     Комфорт
                 </a>
-                <a href="#section-safety" class="nav-item-link me-4 text-decoration-none fw-bold small text-uppercase">
+                <a href="#section-safety" class="nav-item-link me-4 text-decoration-none fw-semibold">
                     Технологии и безопасность
                 </a>
                 <?php if (!empty($gallery)): ?>
-                    <a href="#section-gallery" class="nav-item-link text-decoration-none fw-bold small text-uppercase">
+                    <a href="#section-gallery" class="nav-item-link text-decoration-none fw-semibold">
                         Галерея
                     </a>
                 <?php endif; ?>
             </div>
             <div class="nav-actions d-flex align-items-center gap-2">
                 <?php if (!empty($brochureFile)): ?>
-                    <a href="<?= htmlspecialcharsbx($brochureFile) ?>" target="_blank" class="btn-subnav-action border b-radius-yaradius-8 px-3 py-2 text-decoration-none small fw-bold text-uppercase d-inline-flex align-items-center">
-                        <span class="me-2">Брошюра</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-                        </svg>
+                    <a href="<?= htmlspecialcharsbx($brochureFile) ?>" target="_blank" class="btn-subnav-brochure text-decoration-none d-inline-flex align-items-center">
+                        <span>БРОШЮРА &gt;</span>
+                    </a>
+                <?php else: ?>
+                    <a href="#feedback" class="btn-subnav-brochure text-decoration-none d-inline-flex align-items-center">
+                        <span>БРОШЮРА &gt;</span>
                     </a>
                 <?php endif; ?>
                 <?php if (!empty($warrantyFile)): ?>
-                    <a href="<?= htmlspecialcharsbx($warrantyFile) ?>" target="_blank" class="btn-subnav-action border b-radius-yaradius-8 px-3 py-2 text-decoration-none small fw-bold text-uppercase d-inline-flex align-items-center">
-                        <span class="me-2">Каталог аксессуаров</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
+                    <a href="<?= htmlspecialcharsbx($warrantyFile) ?>" target="_blank" class="btn-subnav-accessories text-decoration-none d-inline-flex align-items-center text-uppercase">
+                        <span>КАТАЛОГ АКСЕССУАРОВ</span>
+                    </a>
+                <?php else: ?>
+                    <a href="/owners/manuals/" class="btn-subnav-accessories text-decoration-none d-inline-flex align-items-center text-uppercase">
+                        <span>КАТАЛОГ АКСЕССУАРОВ</span>
                     </a>
                 <?php endif; ?>
             </div>
         </div>
     </div>
 
-    <!-- 3. SPECS & ENGINE SECTION -->
-    <section id="section-specs" class="model-section py-4 my-3">
+    <!-- 3. BODY TYPES TABS & SPECS SECTION (Exact Figma Component 83) -->
+    <section id="section-specs" class="model-section pt-2 pb-5">
         <div class="container">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <h2 class="model-section-title fw-b-c text-uppercase">
-                        Двигатель и управление
-                    </h2>
-                </div>
+            <!-- Body type tabs -->
+            <div class="model-body-tabs mb-4 pb-1 d-flex flex-wrap">
+                <span class="model-body-tab active" data-body="van">Цельнометаллический</span>
+                <span class="model-body-tab" data-body="cargo-pass">Грузопассажирский фургон</span>
+                <span class="model-body-tab" data-body="bus">Автобус</span>
+                <span class="model-body-tab" data-body="truck">Грузовой автомобиль</span>
             </div>
 
-            <div class="row g-4" id="section-engine">
-                <?php foreach ($engineSpecs as $spec): ?>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <div class="spec-card bg-yawhite b-radius-24 p-4 h-100 d-flex flex-column justify-content-between border">
-                            <div class="spec-title text-muted text-uppercase small fw-bold mb-3">
-                                <?= htmlspecialcharsbx($spec['TITLE']) ?>
+            <div class="text-center my-4 py-2">
+                <h2 class="model-section-title fw-b-c text-uppercase mb-0">
+                    Технические характеристики
+                </h2>
+            </div>
+
+            <!-- Specs Main Card -->
+            <div class="specs-main-card">
+                <div class="row g-4 align-items-center">
+                    <!-- Left Column: Car Image + Wheelbase Switcher + Trim Links -->
+                    <div class="col-12 col-lg-6">
+                        <div class="text-center mb-3">
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/models/sf4/van_side.png" alt="Sollers <?= htmlspecialcharsbx($name) ?> габариты" class="img-fluid d-inline-block" style="max-height: 220px;" />
+                        </div>
+
+                        <!-- Wheelbase switcher -->
+                        <div class="text-center mb-4">
+                            <div class="wheelbase-switcher justify-content-between mx-auto">
+                                <button type="button" class="wheelbase-btn active" data-wb="l1">&lt; Короткая L1 &gt;</button>
+                                <button type="button" class="wheelbase-btn" data-wb="l2">Средняя L2</button>
+                                <button type="button" class="wheelbase-btn" data-wb="l3">Длинная L3</button>
                             </div>
-                            <div class="spec-val-wrap my-auto">
-                                <div class="spec-val fw-b-c display-6 mb-1 text-primary">
-                                    <?= htmlspecialcharsbx($spec['VAL']) ?>
+                        </div>
+
+                        <!-- Trim Links -->
+                        <div class="spec-trim-section pt-3 border-top">
+                            <div class="fw-bold small text-uppercase text-danger mb-2">Комплектации и цены</div>
+                            <div class="row spec-trim-links">
+                                <div class="col-6">
+                                    <a href="#feedback">Sollers SF4 (СФ4) цельнометаллический</a>
+                                    <a href="#feedback">Sollers SF4 (СФ4) автобус</a>
+                                    <a href="#feedback">Sollers SF4 (СФ4) грузопассажирский фургон</a>
+                                    <a href="#feedback">Sollers SF4 (СФ4) промтоварный</a>
                                 </div>
-                                <div class="spec-sub text-muted small">
-                                    <?= htmlspecialcharsbx($spec['SUB']) ?>
+                                <div class="col-6">
+                                    <a href="#feedback">Sollers SF4 (СФ4) изотермический</a>
+                                    <a href="#feedback">Sollers SF4 (СФ4) рефрижератор</a>
+                                    <a href="#feedback">Sollers SF4 (СФ4) бортовой</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+
+                    <!-- Right Column: Metrics Grid -->
+                    <div class="col-12 col-lg-6 ps-lg-4 border-start">
+                        <!-- Dimensions -->
+                        <div class="mb-4">
+                            <div class="spec-category-label">ГАБАРИТНЫЕ РАЗМЕРЫ</div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="spec-metric-num" id="spec-dim-length">4 900</div>
+                                    <div class="spec-metric-label">Общая длина, мм</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="spec-metric-num" id="spec-dim-height">2 395</div>
+                                    <div class="spec-metric-label">Общая высота, мм</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-3 opacity-25" />
+
+                        <!-- Cargo Compartment -->
+                        <div class="mb-4">
+                            <div class="spec-category-label">ГРУЗОВОЙ ОТСЕК</div>
+                            <div class="row g-3 mb-2">
+                                <div class="col-4">
+                                    <div class="spec-metric-num" id="spec-cargo-len">2 430</div>
+                                    <div class="spec-metric-label">Длина на уровне пола, мм</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="spec-metric-num" id="spec-cargo-h">1 630</div>
+                                    <div class="spec-metric-label">Высота, мм</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="spec-metric-num" id="spec-cargo-w">1 780</div>
+                                    <div class="spec-metric-label">Ширина, мм</div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <div class="spec-metric-num" id="spec-cargo-vol">7.1 м³</div>
+                                    <div class="spec-metric-label">Размер грузового отсека</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="spec-metric-num" id="spec-cargo-pallets">3</div>
+                                    <div class="spec-metric-label">Палеты (1200х800 мм)</div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="spec-metric-num" id="spec-cargo-weight">2 499/3 490</div>
+                                    <div class="spec-metric-label">Полная масса, кг</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-3 opacity-25" />
+
+                        <!-- Wheels -->
+                        <div>
+                            <div class="spec-category-label">ТИП ЗАДНИХ КОЛЁС</div>
+                            <div class="fw-bold text-dark fs-6" id="spec-wheels">
+                                Односкатные
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. DARK ENGINE & CONTROL SECTION (Exact Figma Component 85) -->
+    <section id="section-engine" class="model-engine-section-dark py-5">
+        <div class="container py-3">
+            <div class="text-center mb-5">
+                <h2 class="model-section-title text-white fw-b-c text-uppercase mb-0">
+                    Двигатели и управление
+                </h2>
+            </div>
+
+            <div class="engine-dark-card">
+                <div class="row g-0 align-items-stretch">
+                    <!-- Left: Engine Specs & Info -->
+                    <div class="col-12 col-lg-7 p-4 p-md-5 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-white fs-4 fw-bold mb-3">Дизельный двигатель</div>
+                            
+                            <!-- Volume Switcher -->
+                            <div class="engine-volume-switcher">
+                                <button type="button" class="engine-volume-btn active" data-engine="1.9">&lt; Объем 1.9 литра &gt;</button>
+                                <button type="button" class="engine-volume-btn" data-engine="2.7">Объем 2.7 литра</button>
+                            </div>
+
+                            <!-- Power & Torque -->
+                            <div class="row mb-4">
+                                <div class="col-6">
+                                    <div class="engine-metric-val" id="engine-power">136 л.с.</div>
+                                    <div class="engine-metric-sub">Максимальная мощность при 4000 об/мин</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="engine-metric-val" id="engine-torque">310 Нм</div>
+                                    <div class="engine-metric-sub">Максимальный крутящий момент при 1800-2800 об/мин</div>
+                                </div>
+                            </div>
+
+                            <!-- Specs List -->
+                            <div class="mb-4">
+                                <div class="engine-list-item">
+                                    <span><span class="dot"></span>Экологический класс:</span>
+                                    <span class="fw-bold text-white" id="engine-eco">Евро-5</span>
+                                </div>
+                                <div class="engine-list-item">
+                                    <span><span class="dot"></span>Объем топливного бака:</span>
+                                    <span class="fw-bold text-white" id="engine-tank">80 литров</span>
+                                </div>
+                            </div>
+
+                            <!-- Brake system -->
+                            <div class="pt-3 border-top border-secondary">
+                                <div class="text-white fs-5 fw-bold mb-2">Тормозная система</div>
+                                <div class="small text-muted mb-1">
+                                    <span class="dot"></span>Гидравлическая тормозная система с вакуумным усилителем
+                                </div>
+                                <div class="small text-muted">
+                                    <span class="dot"></span>Дисковые тормозные механизмы на передних и задних колесах
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Engine & Car Cutout Photo -->
+                    <div class="col-12 col-lg-5">
+                        <div class="engine-photo-wrap">
+                            <img src="<?= SITE_TEMPLATE_PATH ?>/assets/images/models/sf4/engine_side.png" alt="Двигатель Sollers <?= htmlspecialcharsbx($name) ?>" />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -388,5 +548,111 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         });
     }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Wheelbase switcher data (L1, L2, L3)
+    const wbData = {
+        l1: {
+            len: '4 900',
+            height: '2 395',
+            cargoLen: '2 430',
+            cargoH: '1 630',
+            cargoW: '1 780',
+            cargoVol: '7.1 м³',
+            cargoPallets: '3',
+            cargoWeight: '2 499/3 490'
+        },
+        l2: {
+            len: '5 490',
+            height: '2 395',
+            cargoLen: '3 020',
+            cargoH: '1 630',
+            cargoW: '1 780',
+            cargoVol: '9.2 м³',
+            cargoPallets: '4',
+            cargoWeight: '2 590/3 490'
+        },
+        l3: {
+            len: '5 990',
+            height: '2 645',
+            cargoLen: '3 520',
+            cargoH: '1 880',
+            cargoW: '1 780',
+            cargoVol: '11.5 м³',
+            cargoPallets: '5',
+            cargoWeight: '2 750/3 490'
+        }
+    };
+
+    document.querySelectorAll('.wheelbase-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.wheelbase-btn').forEach(b => {
+                b.classList.remove('active');
+                b.innerText = b.innerText.replace(/[<>]/g, '').trim();
+            });
+            this.classList.add('active');
+            this.innerText = `< ${this.innerText} >`;
+
+            const wb = this.dataset.wb;
+            if (wbData[wb]) {
+                const d = wbData[wb];
+                document.getElementById('spec-dim-length').innerText = d.len;
+                document.getElementById('spec-dim-height').innerText = d.height;
+                document.getElementById('spec-cargo-len').innerText = d.cargoLen;
+                document.getElementById('spec-cargo-h').innerText = d.cargoH;
+                document.getElementById('spec-cargo-w').innerText = d.cargoW;
+                document.getElementById('spec-cargo-vol').innerText = d.cargoVol;
+                document.getElementById('spec-cargo-pallets').innerText = d.cargoPallets;
+                document.getElementById('spec-cargo-weight').innerText = d.cargoWeight;
+            }
+        });
+    });
+
+    // 2. Engine Volume switcher data (1.9 vs 2.7)
+    const engineData = {
+        '1.9': {
+            power: '136 л.с.',
+            torque: '310 Нм',
+            eco: 'Евро-5',
+            tank: '80 литров'
+        },
+        '2.7': {
+            power: '150 л.с.',
+            torque: '355 Нм',
+            eco: 'Евро-5',
+            tank: '80 литров'
+        }
+    };
+
+    document.querySelectorAll('.engine-volume-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.engine-volume-btn').forEach(b => {
+                b.classList.remove('active');
+                b.innerText = b.innerText.replace(/[<>]/g, '').trim();
+            });
+            this.classList.add('active');
+            this.innerText = `< ${this.innerText} >`;
+
+            const eng = this.dataset.engine;
+            if (engineData[eng]) {
+                const ed = engineData[eng];
+                document.getElementById('engine-power').innerText = ed.power;
+                document.getElementById('engine-torque').innerText = ed.torque;
+                document.getElementById('engine-eco').innerText = ed.eco;
+                document.getElementById('engine-tank').innerText = ed.tank;
+            }
+        });
+    });
+
+    // 3. Body tabs interactive
+    document.querySelectorAll('.model-body-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.model-body-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
 });
 </script>

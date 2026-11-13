@@ -220,3 +220,235 @@
     border: 1px solid #E5E7EB !important;
     letter-spacing: 0.05em;
 }
+
+/* ==========================================================================
+   INTERACTIVE SPECS & ENGINE SECTIONS (Figma Components 83 & 85)
+   ========================================================================== */
+
+/* Anchor bar buttons by Figma */
+.btn-subnav-brochure {
+    background-color: #FFFFFF !important;
+    color: #292523 !important;
+    border: 1px solid #292523 !important;
+    border-radius: 8px !important;
+    padding: 8px 18px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-subnav-brochure:hover {
+    background-color: #292523 !important;
+    color: #FFFFFF !important;
+}
+
+.btn-subnav-accessories {
+    background-color: #F37032 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #F37032 !important;
+    border-radius: 8px !important;
+    padding: 8px 22px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-subnav-accessories:hover {
+    background-color: #D15C22 !important;
+    border-color: #D15C22 !important;
+    color: #FFFFFF !important;
+}
+
+/* Body types tabs */
+.model-body-tabs {
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.model-body-tab {
+    color: #6B7280;
+    font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 12px;
+    margin-right: 28px;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+.model-body-tab:hover {
+    color: #111111;
+}
+
+.model-body-tab.active {
+    color: #F37032;
+    font-weight: 700;
+}
+
+.model-body-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #F37032;
+}
+
+/* Specs main card (Component 83) */
+.specs-main-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.wheelbase-switcher {
+    background: #F3F3F3;
+    border-radius: 30px;
+    padding: 4px;
+    display: inline-flex;
+    width: 100%;
+    max-width: 440px;
+}
+
+.wheelbase-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 24px;
+    color: #4B5563;
+    transition: all 0.2s ease;
+}
+
+.wheelbase-btn.active {
+    background: #F37032;
+    color: #FFFFFF;
+}
+
+.spec-category-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #F37032;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.spec-metric-num {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #111111;
+}
+
+.spec-metric-label {
+    font-size: 12px;
+    color: #6B7280;
+    margin-top: 4px;
+}
+
+.spec-trim-links a {
+    color: #4B5563;
+    font-size: 11px;
+    text-decoration: underline;
+    margin-bottom: 6px;
+    display: block;
+    transition: color 0.2s ease;
+}
+
+.spec-trim-links a:hover {
+    color: #F37032;
+}
+
+/* Dark Engine Section (Component 85) */
+.model-engine-section-dark {
+    background-color: #292523 !important;
+}
+
+.engine-dark-card {
+    background-color: #1F1C1B;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.engine-volume-switcher {
+    background: #332F2D;
+    border-radius: 30px;
+    padding: 4px;
+    display: inline-flex;
+    margin-bottom: 24px;
+}
+
+.engine-volume-btn {
+    border: none;
+    background: transparent;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 24px;
+    color: #9CA3AF;
+    transition: all 0.2s ease;
+}
+
+.engine-volume-btn.active {
+    background: #F37032;
+    color: #FFFFFF;
+}
+
+.engine-metric-val {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #FFFFFF;
+}
+
+.engine-metric-sub {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 4px;
+}
+
+.engine-list-item {
+    font-size: 13px;
+    color: #D1D5DB;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.engine-list-item:last-child {
+    border-bottom: none;
+}
+
+.engine-list-item .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #F37032;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.engine-photo-wrap {
+    height: 100%;
+    min-height: 480px;
+    background-color: #E5E7EB;
+}
+
+.engine-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
