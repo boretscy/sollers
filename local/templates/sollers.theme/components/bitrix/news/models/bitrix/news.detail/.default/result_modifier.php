@@ -6,701 +6,167 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 /** @var array $arResult */
 /** @var array $arParams */
 
-$code = strtolower(trim($arResult['CODE']));
+CModule::IncludeModule('iblock');
 
-$modelsData = [
-    'sf4' => [
-        'SLOGAN' => 'СОЗДАН ДЛЯ РАБОТЫ',
-        'SUBTITLE' => '',
-        'PRICE_TEXT' => 'от 2 810 000 ₽',
-        'WARRANTY_BADGES' => [
-            '2 года гарантии без ограничения пробега',
-            '8 лет гарантии от сквозной коррозии',
+$modelId = (int)$arResult['ID'];
+$comfortIbCode = 'model_comfort';
+$safetyIbCode = 'model_safety';
+
+// 1. Получаем ID инфоблоков комфорта и безопасности для выборки и тегированного кэша
+$comfortIbId = 0;
+$safetyIbId = 0;
+$ibRes = CIBlock::GetList([], ['CODE' => [$comfortIbCode, $safetyIbCode]]);
+while ($ib = $ibRes->Fetch()) {
+    if ($ib['CODE'] === $comfortIbCode) {
+        $comfortIbId = (int)$ib['ID'];
+    } elseif ($ib['CODE'] === $safetyIbCode) {
+        $safetyIbId = (int)$ib['ID'];
+    }
+}
+
+// 2. Регистрация тегов кэша (Рекомендация Оси A1: инвалидация кэша страницы при правке связанных ИБ)
+if (defined('B_PROLOG_INCLUDED') && B_PROLOG_INCLUDED === true && !empty($GLOBALS['CACHE_MANAGER'])) {
+    if ($comfortIbId > 0) {
+        $GLOBALS['CACHE_MANAGER']->RegisterTag('iblock_id_' . $comfortIbId);
+    }
+    if ($safetyIbId > 0) {
+        $GLOBALS['CACHE_MANAGER']->RegisterTag('iblock_id_' . $safetyIbId);
+    }
+}
+
+// 3. Выборка опций «Комфорт» из инфоблока model_comfort
+$comfortItems = [];
+if ($comfortIbId > 0 && $modelId > 0) {
+    $cRes = CIBlockElement::GetList(
+        ['SORT' => 'ASC', 'ID' => 'ASC'],
+        [
+            'IBLOCK_ID' => $comfortIbId,
+            'ACTIVE' => 'Y',
+            'PROPERTY_MODEL' => $modelId,
         ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Дизельный двигатель',
-                'VAL' => '2.0 л',
-                'SUB' => 'Надежный турбодизель',
-            ],
-            [
-                'TITLE' => 'Максимальная мощность',
-                'VAL' => '130 л.с.',
-                'SUB' => 'при 3200 об/мин',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '310 Нм',
-                'SUB' => 'при 1600-2400 об/мин',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => '6 МКПП',
-                'SUB' => 'Шестиступенчатая механика',
-            ],
+        false,
+        false,
+        ['ID', 'NAME', 'PREVIEW_TEXT', 'PREVIEW_PICTURE', 'PROPERTY_ICON']
+    );
+    while ($ob = $cRes->GetNextElement()) {
+        $fields = $ob->GetFields();
+        $props = $ob->GetProperties();
+
+        $imgSrc = '';
+        if (!empty($fields['PREVIEW_PICTURE'])) {
+            $imgSrc = CFile::GetPath($fields['PREVIEW_PICTURE']);
+        }
+
+        $iconVal = !empty($props['ICON']['VALUE']) ? strtolower(trim($props['ICON']['VALUE'])) : 'wheel';
+
+        $comfortItems[] = [
+            'ID' => $fields['ID'],
+            'TITLE' => $fields['NAME'],
+            'DESC' => $fields['PREVIEW_TEXT'],
+            'IMG' => $imgSrc,
+            'ICON' => $iconVal,
+        ];
+    }
+}
+
+// 4. Выборка систем «Технологии и безопасность» из инфоблока model_safety
+$safetyItems = [];
+if ($safetyIbId > 0 && $modelId > 0) {
+    $sRes = CIBlockElement::GetList(
+        ['SORT' => 'ASC', 'ID' => 'ASC'],
+        [
+            'IBLOCK_ID' => $safetyIbId,
+            'ACTIVE' => 'Y',
+            'PROPERTY_MODEL' => $modelId,
         ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => 'Современный интерьер',
-                'DESC' => 'Эргономичный салон с клавишами управления круиз-контролем и аудиосистемой на руле',
-                'ICON' => 'wheel',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/comfort/comfort_1_interior.jpg',
-            ],
-            [
-                'TITLE' => 'Предпусковой подогреватель',
-                'DESC' => 'Подогреватель двигателя обеспечивает уверенный запуск в любые морозы',
-                'ICON' => 'engine',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/comfort/comfort_2_heater.jpg',
-            ],
-            [
-                'TITLE' => 'Регулировка сиденья водителя',
-                'DESC' => 'Настройка положений кресла водителя в шести направлениях',
-                'ICON' => 'seat',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/comfort/comfort_3_seat.jpg',
-            ],
-            [
-                'TITLE' => 'Кондиционер',
-                'DESC' => 'Точная регулировка температуры и режимов распределения потоков воздуха',
-                'ICON' => 'climate',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/comfort/comfort_4_ac.jpg',
-            ],
-            [
-                'TITLE' => 'Задний парктроник',
-                'DESC' => 'Высокочувствительные датчики распознают препятствия на расстоянии до 1,5 м',
-                'ICON' => 'park',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/comfort/comfort_5_parktronic.jpg',
-            ],
-            [
-                'TITLE' => 'Электропакет',
-                'DESC' => 'Электрорегулировка боковых зеркал и электрические стеклоподъемники',
-                'ICON' => 'window',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/comfort/comfort_6_mirrors.jpg',
-            ],
-            [
-                'TITLE' => 'Штатная аудиосистема',
-                'DESC' => 'Качественное звучание, радио, MP3 и удобное подключение флеш-карт',
-                'ICON' => 'audio',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/comfort/comfort_7_audio.jpg',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Система курсовой устойчивости (ESP)',
-                'DESC' => 'Предупреждает боковой занос, помогает сохранить траекторию движения и стабилизирует автомобиль во время маневров на высокой скорости при низком сцеплении колес с дорогой.',
-                'BADGE' => 'ESP',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/safety/safety_1_esp.jpg',
-            ],
-            [
-                'TITLE' => 'Безопасность водителя и переднего пассажира',
-                'DESC' => 'В стандартную комплектацию автомобиля включены фронтальные подушки безопасности и звуковой сигнализатор непристегнутых ремней.',
-                'BADGE' => 'AIRBAGS',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/safety/safety_2_airbag.jpg',
-            ],
-            [
-                'TITLE' => 'Антиблокировочная система (ABS) и EBD',
-                'DESC' => 'Предотвращают блокировку колес и распределяют тормозное усилие между передней и задней осями, сохраняя устойчивость и управляемость.',
-                'BADGE' => 'ABS + EBD',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/safety/safety_3_abs.jpg',
-            ],
-            [
-                'TITLE' => 'Круиз-контроль',
-                'DESC' => 'Практичное решение для дальних междугородних поездок: поддерживает постоянную скорость и помогает существенно снизить расход топлива.',
-                'BADGE' => 'CRUISE',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/safety/safety_4_cruise.jpg',
-            ],
-            [
-                'TITLE' => 'Иммобилайзер',
-                'DESC' => 'Электронное противоугонное устройство препятствует запуску двигателя несанкционированным ключом.',
-                'BADGE' => 'SECURITY',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/safety/safety_5_immo.jpg',
-            ],
-            [
-                'TITLE' => 'Полноразмерное запасное колесо',
-                'DESC' => 'Закреплено прочным тросом на заднем свесе автомобиля, легко и безопасно опускается посредством надежного лебедочного механизма.',
-                'BADGE' => 'SPARE WHEEL',
-                'IMG' => '/local/templates/sollers.theme/assets/images/models/sf4/safety/safety_6_wheel.jpg',
-            ],
-        ],
-        'GALLERY' => [
-            '/local/templates/sollers.theme/assets/images/models/sf4/gallery/gallery_1.jpg',
-            '/local/templates/sollers.theme/assets/images/models/sf4/gallery/gallery_2.jpg',
-            '/local/templates/sollers.theme/assets/images/models/sf4/gallery/gallery_3.jpg',
-            '/local/templates/sollers.theme/assets/images/models/sf4/gallery/gallery_4.jpg',
-            '/local/templates/sollers.theme/assets/images/models/sf4/gallery/gallery_5.jpg',
-            '/local/templates/sollers.theme/assets/images/models/sf4/gallery/gallery_6.jpg',
-            '/local/templates/sollers.theme/assets/images/models/sf4/gallery/gallery_7.jpg',
-        ],
-    ],
-    'sf5' => [
-        'SLOGAN' => 'ВЕЗИ. КАЙФУЙ. ЗАРАБАТЫВАЙ',
-        'SUBTITLE' => 'с автоматической коробкой передач',
-        'PRICE_TEXT' => 'от 2 745 000 ₽',
-        'WARRANTY_BADGES' => [
-            '2 года гарантии без ограничения пробега',
-            'Автоматическая коробка передач: 4 года или 200 000 км',
-            'Оцинкованный кузов: 8 лет от сквозной коррозии',
-        ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Дизельный двигатель',
-                'VAL' => '2.0 л',
-                'SUB' => 'Турбированный дизель',
-            ],
-            [
-                'TITLE' => 'Максимальная мощность',
-                'VAL' => '150 л.с.',
-                'SUB' => 'при 3600 об/мин',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '360 Нм',
-                'SUB' => 'при 1600-2600 об/мин',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => 'АКПП',
-                'SUB' => 'Классический гидроавтомат',
-            ],
-        ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => 'Круиз-контроль',
-                'DESC' => 'Круиз-контроль с удобными клавишами управления на рулевом колесе',
-                'ICON' => 'wheel',
-            ],
-            [
-                'TITLE' => 'Предпусковой подогреватель',
-                'DESC' => 'Эффективно обогревает двигатель перед запуском в холодное время',
-                'ICON' => 'engine',
-            ],
-            [
-                'TITLE' => 'Регулировка кресла водителя',
-                'DESC' => 'Настройка сиденья в 6 направлениях и удобный подлокотник',
-                'ICON' => 'seat',
-            ],
-            [
-                'TITLE' => 'Мультимедиа и USB',
-                'DESC' => 'USB-разъемы и интерфейс для подключения любых периферийных устройств',
-                'ICON' => 'audio',
-            ],
-            [
-                'TITLE' => 'Климат-контроль',
-                'DESC' => 'Кондиционер с эффективным охлаждением и обогревом всего пространства',
-                'ICON' => 'climate',
-            ],
-            [
-                'TITLE' => 'Электропакет',
-                'DESC' => 'Электрорегулировка и подогрев зеркал, стеклоподъемники',
-                'ICON' => 'window',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Система курсовой устойчивости (ESP)',
-                'DESC' => 'Постоянно отслеживает направление движения и предотвращает возникновение опасных заносов.',
-                'BADGE' => 'ESP',
-            ],
-            [
-                'TITLE' => 'Подушки безопасности',
-                'DESC' => 'Фронтальные эйрбэги и трехточечные ремни безопасности с преднатяжителями.',
-                'BADGE' => 'AIRBAGS',
-            ],
-            [
-                'TITLE' => 'Тормозная система ABS + EBD',
-                'DESC' => 'Уверенное замедление на мокром и обледенелом покрытии с перераспределением усилий.',
-                'BADGE' => 'ABS + EBD',
-            ],
-            [
-                'TITLE' => 'Иммобилайзер',
-                'DESC' => 'Интеллектуальная защита от угона, блокирующая подачу топлива при попытке несанкционированного старта.',
-                'BADGE' => 'SECURITY',
-            ],
-        ],
-    ],
-    'argo' => [
-        'SLOGAN' => 'МАНЕВРЕННЫЙ И ВМЕСТИТЕЛЬНЫЙ',
-        'SUBTITLE' => '',
-        'PRICE_TEXT' => 'от 2 000 000 ₽',
-        'WARRANTY_BADGES' => [
-            '2 года без ограничения пробега',
-            'Официальная гарантия Sollers',
-        ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Дизельный двигатель',
-                'VAL' => '2.0 л',
-                'SUB' => 'Экономичный дизель',
-            ],
-            [
-                'TITLE' => 'Максимальная мощность',
-                'VAL' => '130 л.с.',
-                'SUB' => 'при 3200 об/мин',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '285 Нм',
-                'SUB' => 'при 2200-2600 об/мин',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => '6 МКПП',
-                'SUB' => 'Механическая коробка передач',
-            ],
-        ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => 'Многофункциональный руль',
-                'DESC' => 'Регулировка по высоте и клавиши управления круиз-контролем',
-                'ICON' => 'wheel',
-            ],
-            [
-                'TITLE' => 'Комфортное водительское кресло',
-                'DESC' => 'Оптимальный анатомический профиль подушки и спинки для долгой работы',
-                'ICON' => 'seat',
-            ],
-            [
-                'TITLE' => 'Столик-органайзер',
-                'DESC' => 'Откидной столик с подстаканниками в спинке центрального сиденья',
-                'ICON' => 'seat',
-            ],
-            [
-                'TITLE' => 'Кондиционер и подогрев сиденья',
-                'DESC' => 'Климатическая система и подогрев водительского сиденья в базе',
-                'ICON' => 'climate',
-            ],
-            [
-                'TITLE' => 'Электропакет',
-                'DESC' => 'Электропривод зеркал и электрические стеклоподъемники',
-                'ICON' => 'window',
-            ],
-            [
-                'TITLE' => 'Противотуманные фары',
-                'DESC' => 'Яркая противотуманная оптика в переднем бампере уже в базе',
-                'ICON' => 'park',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Системы ABS и ASR',
-                'DESC' => 'Антиблокировочная и антипробуксовочная системы сохраняют управляемость на скользких дорогах и исключают пробуксовку при старте.',
-                'BADGE' => 'ABS + ASR',
-            ],
-            [
-                'TITLE' => 'Система курсовой устойчивости (ESC)',
-                'DESC' => 'Предупреждает боковой занос и удерживает автомобиль на траектории во время резких маневров.',
-                'BADGE' => 'ESC',
-            ],
-            [
-                'TITLE' => 'Подушки безопасности',
-                'DESC' => 'Защита водителя и пассажиров с звуковым оповещением о ремнях безопасности.',
-                'BADGE' => 'AIRBAGS',
-            ],
-            [
-                'TITLE' => 'Иммобилайзер',
-                'DESC' => 'Электронный чип-ключ с криптозащитой против угона автомобиля.',
-                'BADGE' => 'SECURITY',
-            ],
-        ],
-    ],
-    'sf1' => [
-        'SLOGAN' => 'УНИВЕРСАЛЬНЫЙ ГОРОДСКОЙ ФУРГОН',
-        'SUBTITLE' => '',
-        'PRICE_TEXT' => 'от 1 960 000 ₽',
-        'WARRANTY_BADGES' => [
-            '2 года без ограничения пробега',
-            'Официальная гарантия Sollers',
-        ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Бензиновый двигатель',
-                'VAL' => '1.5 л',
-                'SUB' => 'Экономичный бензиновый мотор',
-            ],
-            [
-                'TITLE' => 'Максимальная мощность',
-                'VAL' => '136 л.с.',
-                'SUB' => 'при 5500 об/мин',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '200 Нм',
-                'SUB' => 'при 1500-5500 об/мин',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => 'МКПП',
-                'SUB' => 'Механическая трансмиссия',
-            ],
-        ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => 'Зимние опции',
-                'DESC' => 'Подогрев руля, подогрев передних сидений и боковых зеркал',
-                'ICON' => 'climate',
-            ],
-            [
-                'TITLE' => 'Мультируль',
-                'DESC' => 'Многофункциональное рулевое колесо с удобным управлением функциями',
-                'ICON' => 'wheel',
-            ],
-            [
-                'TITLE' => 'Штатная аудиосистема',
-                'DESC' => 'Аудиосистема с чистым звучанием и поддержкой мобильных устройств',
-                'ICON' => 'audio',
-            ],
-            [
-                'TITLE' => 'Сдвижная дверь',
-                'DESC' => 'Широкая боковая дверь обеспечивает удобную разгрузку в тесных дворах',
-                'ICON' => 'window',
-            ],
-            [
-                'TITLE' => 'Эргономика рабочего места',
-                'DESC' => 'Продуманное размещение всех органов управления для неутомительной езды',
-                'ICON' => 'seat',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Антиблокировочная система (ABS)',
-                'DESC' => 'Предотвращает блокировку колес, равномерно распределяет усилия между осями.',
-                'BADGE' => 'ABS',
-            ],
-            [
-                'TITLE' => 'Система курсовой устойчивости (ESC)',
-                'DESC' => 'Контролирует траекторию автомобиля на мокром асфальте, снегу и гравии.',
-                'BADGE' => 'ESC',
-            ],
-            [
-                'TITLE' => 'Усиленный силовой каркас',
-                'DESC' => 'Каркас кузова из высокопрочных сталей обеспечивает целостность кабины при ударе.',
-                'BADGE' => 'BODY',
-            ],
-        ],
-    ],
-    'st6' => [
-        'SLOGAN' => 'ПОЛНОПРИВОДНЫЙ ПИКАП SOLLERS ST6',
-        'SUBTITLE' => '',
-        'PRICE_TEXT' => 'от 3 150 000 ₽',
-        'WARRANTY_BADGES' => [
-            'Гарантия: 3 года или 150 000 км',
-            'Подключаемый полный привод 4х4',
-            'Дорожный просвет: 197 мм',
-        ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Турбодизель / Бензин',
-                'VAL' => '2.0 л',
-                'SUB' => 'Тяговитые надежные двигатели',
-            ],
-            [
-                'TITLE' => 'Мощность',
-                'VAL' => '136 / 176 л.с.',
-                'SUB' => 'Высокая тяга на низах',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '320 / 390 Нм',
-                'SUB' => 'Превосходная динамика',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => '6 МКПП',
-                'SUB' => 'Шестиступенчатая механика',
-            ],
-        ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => 'Мультифункциональный руль',
-                'DESC' => 'Управление мультимедиа и круиз-контролем прямо с руля',
-                'ICON' => 'wheel',
-            ],
-            [
-                'TITLE' => 'Круиз-контроль',
-                'DESC' => 'Автоматическое поддержание заданной скорости на трассе',
-                'ICON' => 'wheel',
-            ],
-            [
-                'TITLE' => 'Предпусковой подогреватель',
-                'DESC' => 'Быстрый прогрев салона и уверенный запуск в суровые морозы',
-                'ICON' => 'engine',
-            ],
-            [
-                'TITLE' => 'Задние датчики парковки',
-                'DESC' => 'Точные ультразвуковые парктроники для уверенного маневрирования',
-                'ICON' => 'park',
-            ],
-            [
-                'TITLE' => 'Эргономичные сиденья',
-                'DESC' => 'Регулировки сидений водителя и пассажира с выраженной боковой поддержкой',
-                'ICON' => 'seat',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Мощная рамная конструкция',
-                'DESC' => 'Рама лонжеронного типа из высокопрочной легированной стали для максимальных нагрузок на бездорожье.',
-                'BADGE' => 'FRAME',
-            ],
-            [
-                'TITLE' => 'Дисковые тормоза всех колес (ABS + EBD)',
-                'DESC' => 'Высокоэффективные тормозные механизмы обеспечивают кратчайший тормозной путь.',
-                'BADGE' => 'ABS + EBD',
-            ],
-            [
-                'TITLE' => 'Система курсовой устойчивости (ESC)',
-                'DESC' => 'Интеллектуальная стабилизация и ассистент удержания пикапа на подъеме.',
-                'BADGE' => 'ESC',
-            ],
-            [
-                'TITLE' => 'Линзованная оптика и ПТФ',
-                'DESC' => 'Яркое освещение дороги с четкой светотеневой границей и противотуманные фары.',
-                'BADGE' => 'LIGHTS',
-            ],
-        ],
-    ],
-    'st8' => [
-        'SLOGAN' => 'ПОЛНОПРИВОДНЫЙ ПИКАП SOLLERS ST8',
-        'SUBTITLE' => 'с автоматической коробкой передач 8-АТ',
-        'PRICE_TEXT' => 'от 3 150 000 ₽',
-        'WARRANTY_BADGES' => [
-            'Гарантия: 3 года или 150 000 км',
-            'Автоматическая трансмиссия 8-АТ',
-            'Оцинкованный кузов и прочная рама',
-        ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Двигатель',
-                'VAL' => '2.0 л',
-                'SUB' => 'Турбодизель нового поколения',
-            ],
-            [
-                'TITLE' => 'Мощность',
-                'VAL' => '136 л.с.',
-                'SUB' => 'при 3600 об/мин',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '410 Нм',
-                'SUB' => 'при 1500-2500 об/мин',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => '8 АКПП',
-                'SUB' => '8-ступенчатый классический автомат',
-            ],
-        ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => 'Сенсорный дисплей 10,4"',
-                'DESC' => 'Мультимедиа система с поддержкой Apple CarPlay и Android Auto',
-                'ICON' => 'audio',
-            ],
-            [
-                'TITLE' => 'Информативная панель',
-                'DESC' => 'Контроль температуры и давления в шинах TPMS в режиме реального времени',
-                'ICON' => 'park',
-            ],
-            [
-                'TITLE' => 'Климат-контроль',
-                'DESC' => 'Управление климатом с дублированием на надежные физические клавиши',
-                'ICON' => 'climate',
-            ],
-            [
-                'TITLE' => 'Круговой обзор 360°',
-                'DESC' => 'Система камер по периметру с двухмерным и трехмерным отображением',
-                'ICON' => 'park',
-            ],
-            [
-                'TITLE' => 'Подогреватель двигателя',
-                'DESC' => 'Предпусковой подогреватель двигателя для идеального зимнего пуска',
-                'ICON' => 'engine',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Система стабилизации (VDC / ESC)',
-                'DESC' => 'Динамический контроль курсовой устойчивости помогает безопасно удержать пикап на траектории.',
-                'BADGE' => 'VDC',
-            ],
-            [
-                'TITLE' => 'Помощь при трогании на подъеме (HHC)',
-                'DESC' => 'Исключает скатывание автомобиля назад на крутых подъемах в горах и на бездорожье.',
-                'BADGE' => 'HILL HOLD',
-            ],
-            [
-                'TITLE' => 'ABS + EBD',
-                'DESC' => 'Четкое замедление с оптимальным балансом тормозных усилий между осями.',
-                'BADGE' => 'ABS + EBD',
-            ],
-            [
-                'TITLE' => 'Прочная рама и подушки безопасности',
-                'DESC' => 'Комплексная силовая защита периметра кабины водителя и пассажиров.',
-                'BADGE' => 'SAFETY',
-            ],
-        ],
-    ],
-    'st9' => [
-        'SLOGAN' => 'ФЛАГМАНСКИЙ ПИКАП SOLLERS ST9',
-        'SUBTITLE' => 'Уверенность в каждом километре пути',
-        'PRICE_TEXT' => 'от 3 425 000 ₽',
-        'WARRANTY_BADGES' => [
-            'Гарантия: 3 года или 150 000 км',
-            'Полный привод с понижающей передачей',
-            'Блокировка заднего дифференциала',
-        ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Бензиновый турбомотор',
-                'VAL' => '2.0 л',
-                'SUB' => '224 л.с. при 5500 об/мин',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '390 Нм',
-                'SUB' => 'при 1900-3000 об/мин',
-            ],
-            [
-                'TITLE' => 'Экологический класс',
-                'VAL' => 'Евро-5',
-                'SUB' => 'Бак 76 литров',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => 'АКПП',
-                'SUB' => 'Автоматическая коробка передач',
-            ],
-        ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => '10,4-дюймовый сенсорный экран',
-                'DESC' => 'Apple CarPlay, Android Auto и физические клавиши климата',
-                'ICON' => 'audio',
-            ],
-            [
-                'TITLE' => 'Круиз-контроль на руле',
-                'DESC' => 'Управление поддержанием скорости клавишами на мультируле',
-                'ICON' => 'wheel',
-            ],
-            [
-                'TITLE' => 'Круговой обзор 360°',
-                'DESC' => 'Камеры по периметру авто с 2D/3D отображением и парктрониками',
-                'ICON' => 'park',
-            ],
-            [
-                'TITLE' => 'Пружинная подвеска',
-                'DESC' => 'Многорычажная пружинная задняя подвеска для непревзойденного комфорта',
-                'ICON' => 'seat',
-            ],
-            [
-                'TITLE' => 'Светодиодная оптика',
-                'DESC' => 'LED фары, дневные ходовые огни и противотуманные фары',
-                'ICON' => 'park',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Электронный стояночный тормоз (EPB) с Auto Hold',
-                'DESC' => 'Включает стояночный тормоз после остановки автомобиля, избавляя водителя от постоянного удержания педали.',
-                'BADGE' => 'AUTO HOLD',
-            ],
-            [
-                'TITLE' => 'Круговой обзор 360°',
-                'DESC' => 'Камеры передают изображение пространства вокруг пикапа на 10,4" экран, исключая мертвые зоны.',
-                'BADGE' => '360 VIEW',
-            ],
-            [
-                'TITLE' => 'Фронтальные подушки и боковые шторки',
-                'DESC' => 'Полноценная круговая защита водителя и всех пассажиров в салоне.',
-                'BADGE' => 'CURTAINS',
-            ],
-            [
-                'TITLE' => 'Системы ESC + ABS + EBD',
-                'DESC' => 'Контроль курсовой устойчивости и адаптивное распределение тормозных сил.',
-                'BADGE' => 'ESC + ABS',
-            ],
-        ],
-    ],
-    'sp7' => [
-        'SLOGAN' => 'ПРЕМИАЛЬНЫЙ МИНИВЭН SOLLERS SP7',
-        'SUBTITLE' => 'Комфортный салон с полноценной лаунж-зоной (2+2+3)',
-        'PRICE_TEXT' => 'от 4 650 000 ₽',
-        'WARRANTY_BADGES' => [
-            'Официальная гарантия Sollers',
-            'Премиальный лаунж-салон',
-            '27 систем активной безопасности',
-        ],
-        'ENGINE_SPECS' => [
-            [
-                'TITLE' => 'Бензиновый турбодвигатель',
-                'VAL' => '2.0 л',
-                'SUB' => '237 л.с. при 5500 об/мин',
-            ],
-            [
-                'TITLE' => 'Крутящий момент',
-                'VAL' => '400 Нм',
-                'SUB' => 'при 3300 об/мин',
-            ],
-            [
-                'TITLE' => 'Экологический класс',
-                'VAL' => 'Евро-6',
-                'SUB' => 'Топливный бак 65 литров',
-            ],
-            [
-                'TITLE' => 'Трансмиссия',
-                'VAL' => 'АКПП',
-                'SUB' => 'Классический гидроавтомат',
-            ],
-        ],
-        'COMFORT_ITEMS' => [
-            [
-                'TITLE' => 'Панорама и люк',
-                'DESC' => 'Электрический люк, панорамная крыша и круговая атмосферная подсветка салона',
-                'ICON' => 'window',
-            ],
-            [
-                'TITLE' => 'Трехзонный климат-контроль',
-                'DESC' => 'Индивидуальные воздуховоды и светильники для каждого из трех рядов',
-                'ICON' => 'climate',
-            ],
-            [
-                'TITLE' => 'Управление с дисплея',
-                'DESC' => 'Настройка климата, медиа и сервоприводов сдвижных дверей с экрана',
-                'ICON' => 'audio',
-            ],
-            [
-                'TITLE' => 'Беспроводная зарядка и USB',
-                'DESC' => 'Беспроводная индукционная зарядка и USB-порты для всех пассажиров',
-                'ICON' => 'audio',
-            ],
-            [
-                'TITLE' => 'Огромный багажный отсек',
-                'DESC' => 'Вместительный багажник объемом 700 / 2500 литров при сложенном 3-м ряде',
-                'ICON' => 'seat',
-            ],
-        ],
-        'SAFETY_ITEMS' => [
-            [
-                'TITLE' => 'Адаптивный круиз-контроль (ACC)',
-                'DESC' => 'Автоматически поддерживает заданную скорость до 150 км/ч и безопасную дистанцию до впередиидущего авто.',
-                'BADGE' => 'ACC',
-            ],
-            [
-                'TITLE' => 'Контроль полосы (LDW)',
-                'DESC' => 'Фронтальная камера отслеживает разметку и предупреждает о непреднамеренном сходе с полосы.',
-                'BADGE' => 'LDW',
-            ],
-            [
-                'TITLE' => 'Мониторинг слепых зон (BSD)',
-                'DESC' => 'Сигнальные лампы в зеркалах оповещают о приближающихся автомобилях в опасной зоне перестроения.',
-                'BADGE' => 'BSD',
-            ],
-            [
-                'TITLE' => '6 подушек безопасности и 27 ассистентов',
-                'DESC' => 'Фронтальные, боковые подушки и шторки безопасности гарантируют высший уровень защищенности.',
-                'BADGE' => '27 SYSTEMS',
-            ],
-        ],
-    ],
+        false,
+        false,
+        ['ID', 'NAME', 'PREVIEW_TEXT', 'DETAIL_TEXT', 'PREVIEW_PICTURE', 'PROPERTY_BADGE']
+    );
+    while ($ob = $sRes->GetNextElement()) {
+        $fields = $ob->GetFields();
+        $props = $ob->GetProperties();
+
+        $imgSrc = '';
+        if (!empty($fields['PREVIEW_PICTURE'])) {
+            $imgSrc = CFile::GetPath($fields['PREVIEW_PICTURE']);
+        }
+
+        $desc = !empty($fields['DETAIL_TEXT']) ? $fields['DETAIL_TEXT'] : $fields['PREVIEW_TEXT'];
+        $badge = !empty($props['BADGE']['VALUE']) ? $props['BADGE']['VALUE'] : 'SAFETY';
+
+        $safetyItems[] = [
+            'ID' => $fields['ID'],
+            'TITLE' => $fields['NAME'],
+            'DESC' => $desc,
+            'IMG' => $imgSrc,
+            'BADGE' => $badge,
+        ];
+    }
+}
+
+// 5. Формирование галереи из множественного свойства MORE_PHOTO основного инфоблока
+$gallery = [];
+if (!empty($arResult['PROPERTIES']['MORE_PHOTO']['VALUE'])) {
+    $photoIds = is_array($arResult['PROPERTIES']['MORE_PHOTO']['VALUE']) 
+        ? $arResult['PROPERTIES']['MORE_PHOTO']['VALUE'] 
+        : [$arResult['PROPERTIES']['MORE_PHOTO']['VALUE']];
+    foreach ($photoIds as $fileId) {
+        if (!empty($fileId)) {
+            $path = CFile::GetPath($fileId);
+            if ($path) {
+                $gallery[] = $path;
+            }
+        }
+    }
+}
+
+// 6. Формирование характеристик двигателя из свойств модели
+$engineSpecs = [];
+$specMap = [
+    'SPEC_ENGINE' => ['TITLE' => 'Двигатель', 'DEFAULT_SUB' => ''],
+    'SPEC_POWER' => ['TITLE' => 'Максимальная мощность', 'DEFAULT_SUB' => ''],
+    'SPEC_TORQUE' => ['TITLE' => 'Крутящий момент', 'DEFAULT_SUB' => ''],
+    'SPEC_TRANSMISSION' => ['TITLE' => 'Трансмиссия', 'DEFAULT_SUB' => ''],
 ];
 
-$arResult['MODEL_DATA'] = $modelsData[$code] ?? ($modelsData['sf4'] ?? []);
+foreach ($specMap as $code => $meta) {
+    if (!empty($arResult['PROPERTIES'][$code]['VALUE'])) {
+        $val = $arResult['PROPERTIES'][$code]['VALUE'];
+        $desc = $arResult['PROPERTIES'][$code]['DESCRIPTION'] ?? '';
+        
+        $title = $meta['TITLE'];
+        $sub = $meta['DEFAULT_SUB'];
+        if (!empty($desc)) {
+            $parts = explode('/', $desc, 2);
+            $title = trim($parts[0]);
+            $sub = isset($parts[1]) ? trim($parts[1]) : '';
+        }
+
+        $engineSpecs[] = [
+            'TITLE' => $title,
+            'VAL' => $val,
+            'SUB' => $sub,
+        ];
+    }
+}
+
+// 7. Сборка модели в $arResult['MODEL_DATA'] полностью из БД
+$slogan = !empty($arResult['PROPERTIES']['SLOGAN']['VALUE']) ? $arResult['PROPERTIES']['SLOGAN']['VALUE'] : 'СОЗДАН ДЛЯ РАБОТЫ';
+$subtitle = !empty($arResult['PROPERTIES']['SUBTITLE']['VALUE']) ? $arResult['PROPERTIES']['SUBTITLE']['VALUE'] : '';
+$warrantyBadges = [];
+if (!empty($arResult['PROPERTIES']['WARRANTY_BADGES']['VALUE'])) {
+    $warrantyBadges = is_array($arResult['PROPERTIES']['WARRANTY_BADGES']['VALUE']) 
+        ? $arResult['PROPERTIES']['WARRANTY_BADGES']['VALUE'] 
+        : [$arResult['PROPERTIES']['WARRANTY_BADGES']['VALUE']];
+}
+
+$arResult['MODEL_DATA'] = [
+    'SLOGAN' => $slogan,
+    'SUBTITLE' => $subtitle,
+    'WARRANTY_BADGES' => $warrantyBadges,
+    'ENGINE_SPECS' => $engineSpecs,
+    'COMFORT_ITEMS' => $comfortItems,
+    'SAFETY_ITEMS' => $safetyItems,
+    'GALLERY' => $gallery,
+];
